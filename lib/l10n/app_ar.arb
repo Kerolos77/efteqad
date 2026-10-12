@@ -1,0 +1,1508 @@
+{
+  "@@locale": "ar",
+  "appName": "الراعي",
+  "save": "حفظ",
+  "cancel": "إلغاء",
+  "delete": "حذف",
+  "edit": "تعديل",
+  "back": "تراجع",
+  "copyAddress": "نسخ العنوان",
+  "currentGradeAdmin": "أمين السنة الحالي",
+  "visitReportLabel": "تقرير الافتقاد",
+  "saveFailed": "تعذر الحفظ. حاول مرة أخرى.",
+  "syncPending": "محفوظ على الجهاز، في انتظار المزامنة",
+  "dataUnavailable": "تعذر تحميل البيانات",
+  "insufficientAttendanceData": "بيانات الحضور غير كافية",
+  "visitsCount": "{count, plural, =0{لا توجد افتقادات} =1{افتقاد واحد} =2{افتقادان} few{{count} افتقادات} many{{count} افتقاداً} other{{count} افتقاد}}",
+  "studentsCount": "{count, plural, =0{لا يوجد مخدومين} =1{مخدوم واحد} =2{مخدومان} few{{count} مخدومين} many{{count} مخدوماً} other{{count} مخدوم}}",
+  "servantsCount": "{count, plural, =0{لا يوجد خدام} =1{خادم واحد} =2{خادمان} few{{count} خدام} many{{count} خادماً} other{{count} خادم}}",
+  "appTagline": "«أَنَا هُوَ الرَّاعِي الصَّالِحُ»",
+  "shepherdVerse": "«اِرْعَ خِرَافِي.. اِرْعَ غَنَمِي»",
+  "shepherdVerseShort": "«كُنْ عَارِفًا حَالَ غَنَمِكَ»",
+  "shepherdVerseLong": "«كُنْ عَارِفًا حَالَ غَنَمِكَ، وَاجْعَلْ قَلْبَكَ إِلَى قُطْعَانِكَ»",
+  "shepherdVerseGoodShepherd": "«الرَّاعِي الصَّالِحُ يَبْذِلُ نَفْسَهُ عَنِ الْخِرَافِ»",
+  "version": "الإصدار {ver}",
+  "@version": {
+    "placeholders": {
+      "ver": {
+        "type": "String"
+      }
+    }
+  },
+  "confirm": "تأكيد",
+  "or": "أو",
+  "all": "الكل",
+  "search": "بحث...",
+  "notes": "ملاحظات",
+  "address": "العنوان",
+  "area": "المنطقة",
+  "school": "المدرسة",
+  "phone": "رقم الهاتف",
+  "continueWithGoogle": "متابعة باستخدام حساب Google",
+  "adminSignInButton": "دخول أمين الخدمة (Admin)",
+  "adminSignInTitle": "تسجيل دخول مسؤول الخدمة",
+  "adminSignInSubtitle": "أدخل كلمة المرور الخاصة بحساب الإدارة",
+  "adminEmailLabel": "بريد المسؤول (Admin Email)",
+  "passwordLabel": "كلمة المرور",
+  "enterDashboardButton": "دخول لوحة التحكم",
+  "pleaseFillAllFields": "يرجى ملء جميع الحقول",
+  "loginFailedCheckCredentials": "فشل الدخول: تحقق من صحة الإيميل وكلمة المرور",
+  "loginError": "حدث خطأ أثناء تسجيل الدخول: {err}",
+  "@loginError": {
+    "placeholders": {
+      "err": {
+        "type": "String"
+      }
+    }
+  },
+  "headServant": "أمين الخدمة",
+  "servant": "خادم",
+  "adminRole": "مسؤول",
+  "servantRole": "خادم",
+  "mainDashboard": "لوحة التحكم الرئيسية",
+  "excelTools": "أدوات الإكسيل (استيراد وتصدير)",
+  "myGroupAndVisits": "مجموعتي والافتقاد",
+  "servantProfile": "الملف الشخصي للخادم",
+  "generalSettings": "الإعدادات العامة",
+  "signOut": "تسجيل الخروج",
+  "signOutConfirmTitle": "تسجيل الخروج",
+  "signOutConfirmMsg": "هل أنت متأكد من رغبتك في تسجيل الخروج من التطبيق؟",
+  "settingsTitle": "الإعدادات",
+  "appearanceSection": "المظهر والرؤية",
+  "darkMode": "الوضع الليلي (Dark Mode)",
+  "lightMode": "الوضع الفاتح (Light Mode)",
+  "darkModeDesc": "راحة للعين في الإضاءة الخافتة",
+  "lightModeDesc": "ألوان ناصعة ومريحة في النهار",
+  "languageSection": "اللغة (Language)",
+  "arabicLang": "العربية (Arabic)",
+  "arabicLangDesc": "اللغة الافتراضية مع دعم RTL",
+  "englishLang": "English (الإنجليزية)",
+  "englishLangDesc": "التبديل إلى الواجهة الإنجليزية",
+  "aboutSection": "عن التطبيق والخدمة",
+  "aboutServiceDesc": "تطبيق مخصص لخدمة وافتقاد مخدومي فصل البابا كيرلس السادس، يساعد الخدام وأمين الخدمة على رعاية وتدوين افتقاد كل نفس بمحبة وأمانة.",
+  "accountSection": "إدارة الحساب",
+  "signOutAccountDesc": "الخروج من الحساب الحالي والعودة لشاشة الدخول",
+  "deleteAccount": "حذف الحساب نهائياً",
+  "deleteAccountDesc": "حذف بيانات الخادم وفك ارتباط الأولاد المسندين",
+  "deleteAccountWarningTitle": "حذف الحساب نهائياً",
+  "deleteAccountWarningPrompt": "أنت على وشك حذف حسابك نهائياً من نظام الافتقاد.",
+  "deleteAccountPoints": "• سيتم فك ارتباط جميع الأولاد المسندين لك وإعادتهم للأولاد غير الموزعين ليتمكن أمين الخدمة من إعادة توزيعهم.\n• سيتم مسح بياناتك نهائياً من قاعدة البيانات.\n• هذا الإجراء لا يمكن التراجع عنه.",
+  "deleteAccountConfirmBtn": "نعم، احذف الحساب",
+  "accountDeletedSuccess": "تم حذف الحساب بنجاح",
+  "deleteAccountFailed": "فشل حذف الحساب: {err} (قد يتطلب إعادة تسجيل الدخول للتأكيد الأمني)",
+  "@deleteAccountFailed": {
+    "placeholders": {
+      "err": {
+        "type": "String"
+      }
+    }
+  },
+  "profileTitle": "الملف الشخصي",
+  "verifiedServantBadge": "خادم معتمد",
+  "assignedCountInCare": "{count} مخدومين بمسؤوليتك",
+  "@assignedCountInCare": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "personalInfoSection": "البيانات الشخصية",
+  "servantFullNameLabel": "اسم الخادم بالكامل",
+  "servantNameRequired": "يرجى إدخال اسم الخادم",
+  "servantPhoneLabel": "رقم الهاتف المحمول",
+  "servantPhoneRequired": "يرجى إدخال رقم الهاتف",
+  "googleEmailLabel": "البريد الإلكتروني (Google)",
+  "emailReadOnlyNote": "البريد الإلكتروني مرتبط بحساب Google ولا يمكن تعديله",
+  "saveChanges": "حفظ التعديلات",
+  "profileUpdatedSuccess": "تم تحديث بياناتك بنجاح!",
+  "profileUpdateError": "حدث خطأ أثناء حفظ البيانات: {err}",
+  "@profileUpdateError": {
+    "placeholders": {
+      "err": {
+        "type": "String"
+      }
+    }
+  },
+  "servantGreeting": "سلام ونعمة يا أ/ {name}",
+  "@servantGreeting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "visitedRatio": "تم افتقاد {v} من {t} مخدوم",
+  "@visitedRatio": {
+    "placeholders": {
+      "v": {
+        "type": "int",
+        "format": "decimalPattern"
+      },
+      "t": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "searchMyMakhdomeen": "ابحث في مخدوميك بالاسم أو المنطقة...",
+  "filterVisited": "تم افتقادهم",
+  "filterUnvisited": "لم يفتقدوا بعد",
+  "filterBrethren": "أخوة الرب",
+  "filterMyMakhdomeen": "مخدوميني",
+  "noMakhdomeenAssignedTitle": "لا يوجد مخدومين مسندين إليك حالياً",
+  "noMakhdomeenAssignedSubtitle": "سيتولى أمين الخدمة توزيع الأولاد عليك قريباً",
+  "logVisitTitle": "تسجيل افتقاد جديد",
+  "visitTypeLabel": "نوع الافتقاد:",
+  "visitHome": "🏠 زيارة منزلية",
+  "visitPhone": "📞 مكالمة تليفونية",
+  "visitChurch": "⛪ لقاء في الكنيسة",
+  "visitOther": "💬 رسالة / أخرى",
+  "visitDateLabel": "تاريخ الافتقاد: {date}",
+  "@visitDateLabel": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "visitNotesHint": "ملاحظات الافتقاد (اختياري)...",
+  "saveVisitBtn": "حفظ الافتقاد",
+  "visitSavedSuccess": "تم تسجيل الافتقاد بنجاح! ✝️",
+  "visitSaveError": "خطأ أثناء تسجيل الافتقاد: {err}",
+  "@visitSaveError": {
+    "placeholders": {
+      "err": {
+        "type": "String"
+      }
+    }
+  },
+  "adminDashboardTitle": "لوحة تحكم المسؤول",
+  "makhdomeenAndKhodamSummary": "{m} مخدوم • {k} خدام",
+  "@makhdomeenAndKhodamSummary": {
+    "placeholders": {
+      "m": {
+        "type": "int",
+        "format": "decimalPattern"
+      },
+      "k": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "tabMakhdomeen": "المخدومين ({count})",
+  "@tabMakhdomeen": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "tabAnalytics": "التحليلات والمتابعة",
+  "tabKhodam": "الخدام ({count})",
+  "@tabKhodam": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "searchAdminHint": "ابحث بالاسم، المنطقة، الهاتف، أو المدرسة...",
+  "filterUnassigned": "بدون خادم",
+  "deleteMakhdomTitle": "تأكيد الحذف",
+  "deleteMakhdomPrompt": "هل أنت متأكد من حذف المخدوم ({name}) نهائياً؟",
+  "@deleteMakhdomPrompt": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "makhdomDeletedSuccess": "تم حذف المخدوم بنجاح",
+  "makhdomUnassignedSuccess": "تم إلغاء ربط ({name}) بالخادم",
+  "@makhdomUnassignedSuccess": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "noSearchResults": "لا توجد نتائج مطابقة للبحث أو الفلتر",
+  "assignSelectedMakhdomeen": "إسناد المحددين",
+  "totalCountBadge": "الإجمالي",
+  "addMakhdomBtn": "إضافة مخدوم",
+  "servantGroupHeader": "مجموعة: {name}",
+  "@servantGroupHeader": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "servantGroupSubheader": "اضغط لتحديد وتوزيع الأولاد على هذا الخادم",
+  "assignChildrenBtn": "توزيع أولاد",
+  "noMatchingMakhdomeenPrompt": "جرّب تغيير كلمات البحث أو اختيار فلتر آخر",
+  "brethrenBadge": "أخوة الرب",
+  "unassignedBadge": "بدون خادم",
+  "servantBadge": "خادم: {name}",
+  "@servantBadge": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "notVisitedYetBadge": "لم يتم افتقاده",
+  "lastVisitBadge": "آخر افتقاد: {date} ({count} مرات)",
+  "@lastVisitBadge": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "visitCountSummary": "{count, plural, =0{لا توجد افتقادات} =1{افتقاد واحد} =2{افتقادان} few{{count} افتقادات} many{{count} افتقاداً} other{{count} افتقاد}}",
+  "@visitCountSummary": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "details": "تفاصيل",
+  "less": "أقل",
+  "callAction": "اتصال",
+  "whatsappAction": "واتساب",
+  "mapAction": "الخريطة",
+  "visitAction": "افتقاد",
+  "familyDetails": "تفاصيل الأسرة",
+  "fatherPhoneLabel": "تليفون الأب:",
+  "motherPhoneLabel": "تليفون الأم:",
+  "addressLabel": "العنوان:",
+  "schoolLabel": "المدرسة:",
+  "birthDateDetailLabel": "تاريخ الميلاد:",
+  "ageYearsOld": "{age} سنة",
+  "@ageYearsOld": {
+    "placeholders": {
+      "age": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "notesLabel": "ملاحظات:",
+  "editDetailsAction": "تعديل البيانات",
+  "unassignServantAction": "إلغاء الإسناد من الخادم",
+  "deleteMakhdomAction": "حذف المخدوم نهائياً",
+  "historyAction": "سجل الافتقاد والحضور",
+  "makhdomHistorySubtitle": "سجل تفصيلي للافتقادات والحضور وأثر الافتقاد على الحضور",
+  "totalVisitsLabel": "إجمالي الافتقادات",
+  "massAttendanceLabel": "حضور القداس",
+  "serviceAttendanceLabel": "حضور الخدمة",
+  "visitSuccessRateLabel": "أثر الافتقاد",
+  "filterAllLabel": "الكل",
+  "filterVisitsLabel": "الافتقادات فقط",
+  "filterAttendanceLabel": "الحضور والغياب",
+  "filterFruitfulLabel": "أثمرت بحضور الجمعة ✅",
+  "filterAbsencesLabel": "جمعات الغياب ❌",
+  "filterAllTime": "كل الأوقات",
+  "filterLast30Days": "آخر 30 يوم",
+  "filterLast90Days": "آخر 3 أشهر",
+  "filterCustomDate": "تحديد فترة...",
+  "nextFridayTitle": "الجمعة التالية للافتقاد",
+  "fruitfulVisitBadge": "أثمر الافتقاد: حضر القداس والخدمة 🌟",
+  "attendedServiceOnlyBadge": "حضر الخدمة فقط",
+  "attendedMassOnlyBadge": "حضر القداس فقط",
+  "missedNextFridayBadge": "غائب عن القداس والخدمة ⚠️",
+  "pendingNextFridayBadge": "في انتظار الجمعة القادمة ⏳",
+  "noSessionsNextFridayBadge": "لم تسجل جلسات لهذه الجمعة",
+  "fridayRecordTitle": "يوم الجمعة",
+  "attendedMassStatus": "القداس: حاضر ✅",
+  "absentMassStatus": "القداس: غائب ❌",
+  "attendedServiceStatus": "الخدمة: حاضر ✅",
+  "absentServiceStatus": "الخدمة: غائب ❌",
+  "precededByVisitBadge": "✨ سُبق بافتقاد ({type}) بواسطة {servant} في {date}",
+  "@precededByVisitBadge": {
+    "placeholders": {
+      "type": {
+        "type": "String"
+      },
+      "servant": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "noRecordsFoundForFilter": "لا توجد سجلات مطابقة للفلاتر المحددة",
+  "logNewVisitButton": "تسجيل افتقاد جديد",
+  "makhdomProfileDetails": "بيانات المخدوم الكاملة",
+  "makhdomProfileHide": "إخفاء التفاصيل",
+  "makhdomProfileShow": "عرض كافة البيانات",
+  "academicAndAgeInfo": "الدراسة والمرحلة والسن",
+  "residenceAndAddressInfo": "السكن والعنوان واللوكيشن",
+  "familyAndContactsInfo": "بيانات التواصل والعائلة",
+  "registrationDateLabel": "تاريخ القيد بالخدمة:",
+  "estimatedAgeLabel": "عمر تقديري",
+  "realBirthDateLabel": "تاريخ ميلاد موثق",
+  "notSpecified": "غير محدد",
+  "openInGoogleMaps": "فتح في خرائط Google",
+  "pastoralNotes": "ملاحظات رعوية خاصة",
+  "fatherLabel": "والد المخدوم (الأب)",
+  "motherLabel": "والدة المخدوم (الأم)",
+  "studentPhoneLabel": "هاتف المخدوم",
+  "copyPhoneSuccess": "تم نسخ الرقم بنجاح",
+  "copyAddressSuccess": "تم نسخ العنوان بنجاح",
+  "editMakhdomTitle": "تعديل بيانات مخدوم",
+  "addMakhdomTitle": "إضافة مخدوم جديد",
+  "personalAndContactSec": "البيانات الشخصية والاتصال",
+  "fullNameRequiredLabel": "الاسم بالكامل *",
+  "fullNameValidation": "يرجى إدخال اسم المخدوم بالكامل",
+  "makhdomPhoneLabel": "رقم الهاتف (المخدوم)",
+  "birthDateInputLabel": "تاريخ الميلاد",
+  "selectBirthDateHint": "اضغط لاختيار تاريخ الميلاد",
+  "phoneRequired": "رقم التليفون مطلوب",
+  "saving": "جارٍ الحفظ...",
+  "fatherPhoneInputLabel": "تليفون الأب",
+  "motherPhoneInputLabel": "تليفون الأم",
+  "residenceAndSchoolSec": "السكن والتعليم",
+  "residentialAreaLabel": "المنطقة السكنية",
+  "detailedAddressLabel": "العنوان بالتفصيل",
+  "schoolNameInputLabel": "اسم المدرسة",
+  "secondaryTypeInputLabel": "نوع الثانوية",
+  "googleMapsUrlLabel": "رابط موقع المنزل (Google Maps)",
+  "useCurrentLocation": "استخدم موقعي الحالي",
+  "locationPermissionDenied": "تم رفض إذن الموقع",
+  "locationPermissionPermanentlyDenied": "إذن الموقع مرفوض دائماً، يرجى تفعيله من الإعدادات",
+  "openSettings": "الإعدادات",
+  "locationFetchedSuccess": "✓ تم جلب الموقع بنجاح",
+  "locationError": "خطأ في جلب الموقع",
+  "serviceAndCareSec": "الخدمة والتوزيع والرعاية",
+  "assignedServantSelectLabel": "الخادم المسؤول عن الافتقاد",
+  "unassignedNoServantOption": "بدون خادم (غير موزع)",
+  "brethrenSwitchLabel": "أخوة الرب (رعاية خاصة ومحبة)",
+  "brethrenSwitchSublabel": "تمييز الحالة لتوفير اهتمام ورعاية استثنائية",
+  "photoUrlOptionalLabel": "رابط الصورة الشخصية (اختياري)",
+  "additionalNotesOptionalLabel": "ملاحظات إضافية (اختياري)",
+  "makhdomSavedSuccess": "تم حفظ بيانات المخدوم بنجاح",
+  "makhdomSaveError": "خطأ أثناء الحفظ: {err}",
+  "@makhdomSaveError": {
+    "placeholders": {
+      "err": {
+        "type": "String"
+      }
+    }
+  },
+  "assignModalHeader": "توزيع المخدومين على {name}",
+  "@assignModalHeader": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "selectAll": "تحديد الكل",
+  "deselectAll": "إلغاء التحديد",
+  "searchByNameOrArea": "ابحث بالاسم أو المنطقة...",
+  "conflictWarningTitle": "تنبيه نقل مخدومين",
+  "conflictWarningSubtitle": "هناك مخدومين تم تحديدهم وهم مسندين بالفعل لخدام آخرين، هل تود نقلهم؟",
+  "conflictWarningTransferCount": "أنت على وشك نقل {count} مخدوم مربوطين حالياً بخدام آخرين إلى ({name}):",
+  "@conflictWarningTransferCount": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "confirmTransferQuestion": "هل تريد بالتأكيد نقلهم وتحديث قاعدة البيانات؟",
+  "otherServant": "خادم آخر",
+  "resultsCount": "عدد النتائج: {count}",
+  "@resultsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "saveAssignmentsWithCount": "حفظ التوزيع وتأكيد ({count}) مخدوم",
+  "@saveAssignmentsWithCount": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "conflictTransferBtn": "نعم، تأكيد النقل",
+  "conflictKeepBtn": "تراجع",
+  "saveAssignmentsBtn": "حفظ التوزيع",
+  "assignmentsSavedSuccess": "تم تحديث وحفظ توزيع المخدومين بنجاح",
+  "excelSheetTitle": "إدارة ملفات Excel",
+  "excelDownloadTemplate": "تحميل قالب إكسيل فارغ",
+  "excelDownloadTemplateDesc": "قالب جاهز بالأعمدة لملء بيانات المخدومين بسهولة",
+  "excelImportMakhdomeen": "استيراد مخدومين من إكسيل",
+  "excelImportMakhdomeenDesc": "قراءة ملف إكسيل وإضافة المخدومين لقاعدة البيانات",
+  "excelExportMakhdomeen": "تصدير المخدومين إلى إكسيل",
+  "excelExportMakhdomeenDesc": "تنزيل ملف إكسيل بجميع المخدومين وحالات الافتقاد",
+  "excelConfirmImportTitle": "تأكيد الاستيراد",
+  "excelConfirmImportPrompt": "تم العثور على ({count}) مخدوم في الشيت. هل تريد استيرادهم وإضافتهم إلى قاعدة البيانات الآن؟",
+  "@excelConfirmImportPrompt": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "excelImportNowBtn": "استيراد الآن",
+  "excelImportSuccessMsg": "تم استيراد ({count}) مخدوم بنجاح!",
+  "@excelImportSuccessMsg": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "excelEmptyOrCanceled": "لم يتم العثور على مخدومين في الملف أو تم إلغاء الاختيار",
+  "performanceAndCareIndicators": "مؤشرات الأداء والرعاية",
+  "liveFollowupAndRates": "متابعة حية ونسب إنجاز خدام الفصل",
+  "noAnalyticsData": "لا توجد بيانات كافية لعرض التحليلات",
+  "totalMakhdomeenStat": "إجمالي المخدومين",
+  "visitedAtLeastOnceStat": "تم افتقادهم",
+  "neverVisitedStat": "لم يُفتقدوا",
+  "brethrenStat": "أخوة الرب",
+  "overallVisitRate": "نسبة الافتقاد العامة",
+  "servantsLeaderboard": "لوحة إنجاز الخدام",
+  "rankedByVisitRate": "ترتيب الخدام بحسب نسبة الافتقاد لمجموعاتهم",
+  "urgentFollowupNeverVisited": "متابعة عاجلة: لم يتم افتقادهم نهائياً",
+  "urgentCountNeedingVisit": "{count} مخدوم بحاجة لافتقاد سريع",
+  "@urgentCountNeedingVisit": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "activeServantsStat": "خدام نشطون",
+  "totalMakhdomeenTitle": "إجمالي المخدومين",
+  "totalBoysAssignedSubtitle": "{count} مسند لخادم",
+  "@totalBoysAssignedSubtitle": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "visitationRateTitle": "نسبة الافتقاد العامة",
+  "visitedBoysCountSubtitle": "{count} تم افتقادهم",
+  "@visitedBoysCountSubtitle": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "neverVisitedTitle": "لم يُفتقدوا",
+  "needsUrgentVisitSubtitle": "بحاجة لافتقاد سريع",
+  "brethrenOfLordTitle": "أخوة الرب",
+  "specialFollowupSubtitle": "رعاية وافتقاد خاص",
+  "visitationDistributionTitle": "توزيع نسب الافتقاد",
+  "servantsAchievementRatesTitle": "نسب إنجاز الخدام",
+  "noKhodamYet": "لا يوجد خدام مسجلين بعد",
+  "unvisitedChildrenHeader": "مخدومون لم يتم افتقادهم ({count})",
+  "@unvisitedChildrenHeader": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "assignedToKhademLabel": "مسند إلى: {name}",
+  "@assignedToKhademLabel": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "noKhodamRegisteredYet": "لا يوجد خدام مسجلين بعد",
+  "khodamAutoAppearNote": "سيظهر الخدام هنا تلقائياً بمجرد تسجيل دخولهم لأول مرة بحساب Google الخاص بهم.",
+  "assignMakhdomeenActionBtn": "توزيع وإسناد المخدومين",
+  "assignedMakhdomeenCount": "{count} مخدوم مسند",
+  "@assignedMakhdomeenCount": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "visitedOfTotalCount": "{v} من {t} تم افتقادهم",
+  "@visitedOfTotalCount": {
+    "placeholders": {
+      "v": {
+        "type": "int",
+        "format": "decimalPattern"
+      },
+      "t": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "grade1stName": "أولى ثانوي",
+  "grade2ndName": "ثانية ثانوي",
+  "grade3rdName": "ثالثة ثانوي",
+  "allGrades": "كل السنين",
+  "gradeLabel": "السنة الدراسية",
+  "stageAdminTitle": "أمين مرحلة ثانوي",
+  "gradeAdminTitle": "أمين {grade}",
+  "@gradeAdminTitle": {
+    "placeholders": {
+      "grade": {
+        "type": "String"
+      }
+    }
+  },
+  "servantRoleLabel": "خادم",
+  "pendingRoleLabel": "قيد التسكين",
+  "pendingWelcome": "أهلاً بك يا خادم المسيح في أسرة مرحلة ثانوي ✝️",
+  "pendingStatusTitle": "في انتظار تسكينك وتوزيعك",
+  "pendingStatusDesc": "تم تسجيل حسابك بنجاح. سيتولى أمين مرحلة ثانوي تسكينك في سنتك الدراسية (أولى، ثانية، أو ثالثة ثانوي) قريباً.",
+  "completeProfilePrompt": "يرجى تأكيد بياناتك الشخصية لتسهيل التعرف عليك:",
+  "updateAndSave": "تحديث وحفظ",
+  "stageDashboardTitle": "لوحة أمانة مرحلة ثانوي",
+  "tabGradesAndServants": "الخدام والتسكين",
+  "tabStageAnalytics": "تحليلات المرحلة",
+  "tabStageTasks": "مهام المرحلة",
+  "pendingServantsSection": "خدام جدد بانتظار التسكين",
+  "gradeHeadsSection": "أمناء السنين الدراسية",
+  "appointGradeHeadBtn": "تعيين أمين السنة",
+  "changeGradeHeadBtn": "تغيير الأمين",
+  "noGradeHeadAssigned": "لم يتم تعيين أمين بعد",
+  "assignServantToGradePrompt": "تسكين الخادم في سنة دراسية",
+  "selectGradePrompt": "اختر السنة الدراسية:",
+  "servantAssignedSuccess": "تم تسكين الخادم بنجاح!",
+  "gradeHeadUpdatedSuccess": "تم تعيين أمين السنة بنجاح!",
+  "gradeDashboardTitle": "لوحة أمانة {grade}",
+  "@gradeDashboardTitle": {
+    "placeholders": {
+      "grade": {
+        "type": "String"
+      }
+    }
+  },
+  "tabGradeMakhdomeen": "المخدومين",
+  "tabGradeAnalytics": "التحليلات",
+  "tabGradeServants": "خدام السنة",
+  "tabGradeTasks": "مهام السنة",
+  "myTasksTitle": "مهامي المكلف بها",
+  "addTaskTitle": "إضافة مهمة جديدة",
+  "taskTitleLabel": "عنوان المهمة *",
+  "taskTitleRequired": "يرجى كتابة عنوان المهمة",
+  "taskDescLabel": "تفاصيل المهمة (اختياري)",
+  "taskAssigneeLabel": "الخادم المكلف *",
+  "taskTypeLabel": "نوع المهمة",
+  "taskTypeGeneral": "مهمة عامة (تحضير/نشاط)",
+  "taskTypeAttendance": "تسجيل حضور وغياب",
+  "taskTypeVisitation": "افتقاد خاص",
+  "taskCreatedSuccess": "تمت إضافة المهمة بنجاح!",
+  "noTasksYet": "لا توجد مهام مسندة حالياً",
+  "completedTasksSection": "مهام تم إنجازها",
+  "pendingTasksSection": "مهام قيد التنفيذ",
+  "taskCompletedMsg": "تم إنجاز المهمة بنجاح! ✝️",
+  "taskReopenedMsg": "تمت إعادة فتح المهمة",
+  "reopenAttendance": "إعادة فتح الحضور",
+  "reopenAttendanceAction": "إعادة الفتح",
+  "reopenReason": "سبب إعادة الفتح",
+  "deleteTaskPrompt": "هل تريد حذف هذه المهمة نهائياً؟",
+  "taskTypeAttendanceKhedma": "حضور الخدمة",
+  "taskTypeAttendanceQoddas": "حضور القداس",
+  "takeAttendanceAction": "بدء رصد الحضور 📋",
+  "attendanceScreenTitleService": "رصد حضور الخدمة",
+  "attendanceScreenTitleMass": "رصد حضور القداس",
+  "totalAttendedCount": "الحضور: {attended} / {total}",
+  "@totalAttendedCount": {
+    "placeholders": {
+      "attended": {
+        "type": "int",
+        "format": "decimalPattern"
+      },
+      "total": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "selectedAttendedHeader": "الحاضرون الآن",
+  "noAttendedYetHint": "لم يتم تحديد أي مخدوم بعد • علم بالأسفل",
+  "searchAttendanceHint": "ابحث بالاسم أو الهاتف...",
+  "fridayOnlyWarning": "يتم رصد الحضور أيام الجمعة فقط",
+  "scheduleMassAttendanceBtn": "جدولة حضور قداس الجمعة ⛪",
+  "scheduleMassAttendanceTitle": "جدولة حضور قداس مرحلة ثانوي",
+  "scheduleMassAttendanceSubtitle": "اختر تاريخ الجمعة والخادم المكلف برصد حضور كل السنين",
+  "notAuthorizedAttendance": "عفواً، هذه المهمة مخصصة لخادم آخر",
+  "autoSavedNotice": "يتم الحفظ تلقائياً",
+  "tabVisitsAnalytics": "مؤشرات الافتقاد",
+  "tabAttendanceAnalytics": "مؤشرات الحضور",
+  "tabSmartInsights": "التحليلات الذكية والتنبيهات 🧠",
+  "absenceAlertsHeader": "إنذارات الغياب المتكرر",
+  "absenceAlertsSubtitle": "شباب تغيبوا لجمعتين متتاليتين أو أكثر ويحتاجون لافتقاد عاجل",
+  "missedFridaysCount": "غائب لـ {count} جمعات متتالية",
+  "@missedFridaysCount": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "criticalAbsenceBadge": "خطر انقطاع حرج 🚨",
+  "warningAbsenceBadge": "تحذير غياب متكرر ⚠️",
+  "visitationImpactHeader": "أثر الافتقاد على الحضور 💡",
+  "visitationImpactSubtitle": "مقارنة نسبة الحضور بين الأولاد المفتقدين وغير المفتقدين",
+  "visitationImpactValue": "الفرق المرتبط بالافتقاد في الحضور: {impact} نقطة مئوية (لا يدل على السببية)",
+  "@visitationImpactValue": {
+    "placeholders": {
+      "impact": {
+        "type": "double",
+        "format": "decimalPatternDigits",
+        "optionalParameters": {
+          "decimalDigits": 1
+        }
+      }
+    }
+  },
+  "segmentConsistent": "الملتزمون 🌟",
+  "segmentIrregular": "المتذبذبون 🔄",
+  "segmentAtRisk": "المعرضون للانقطاع 🚨",
+  "servantMyAnalytics": "إحصائياتي",
+  "servantGroupAttendanceRate": "نسبة حضور مجموعتي",
+  "servantGroupVisitationProgress": "إنجاز افتقاد مجموعتي",
+  "urgentVisitationNeeded": "مطلوب افتقاد عاجل",
+  "noAbsenceAlerts": "لا توجد إنذارات غياب حالياً • الكل منتظم ومتابع 🎉",
+  "allDetailsAction": "عرض كل البيانات",
+  "hideDetailsAction": "إخفاء التفاصيل",
+  "assignedKhademLabel": "الخادم المسؤول",
+  "generalNotesTitle": "ملاحظات عامة عن المخدوم",
+  "overallAttendanceTitle": "نسبة الحضور الإجمالية",
+  "totalVisitsTitle": "إجمالي الافتقادات",
+  "consecutiveAbsenceTitle": "الغياب المتتالي",
+  "massAndServiceRatesTitle": "حضور القداس والخدمة",
+  "visitationCorrelationTitle": "الارتباط الإحصائي للافتقاد",
+  "visitationCorrelationBody": "فرق الحضور بعد الزيارات: {diff} نقطة مئوية (ارتباط دون ادعاء السببية).",
+  "@visitationCorrelationBody": {
+    "placeholders": {
+      "diff": {
+        "type": "String"
+      }
+    }
+  },
+  "insufficientHistoryDataHint": "لا توجد جلسات خدمة مكتملة ومؤهلة في هذه الفترة.",
+  "daysSinceLastVisit": "{days, plural, =0{اليوم} =1{منذ يوم} =2{منذ يومين} few{منذ {days} أيام} many{منذ {days} يوماً} other{منذ {days} يوم}}",
+  "@daysSinceLastVisit": {
+    "placeholders": {
+      "days": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "noVisitsYet": "لم يُفتقد بعد",
+  "noConsecutiveAbsences": "منتظم ومتابع",
+  "criticalAbsenceAlert": "إنذار خطر انقطاع 🚨",
+  "warningAbsenceAlert": "مطلوب افتقاد عاجل ⚠️",
+  "attendanceRatio": "{attended} من {eligible} جلسة",
+  "@attendanceRatio": {
+    "placeholders": {
+      "attended": {
+        "type": "int",
+        "format": "decimalPattern"
+      },
+      "eligible": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "massRateSubtitle": "نسبة حضور القداس {rate}%",
+  "@massRateSubtitle": {
+    "placeholders": {
+      "rate": {
+        "type": "String"
+      }
+    }
+  },
+  "filterAllEvents": "كل الأحداث",
+  "filterVisitsOnly": "الزيارات فقط",
+  "filterAttendanceOnly": "الحضور فقط",
+  "filterFruitfulOnly": "المثمرة فقط",
+  "filterAbsencesOnly": "الغياب فقط",
+  "rangeAllTime": "كل الفترات",
+  "rangeLast30Days": "آخر 30 يوم",
+  "rangeLast90Days": "آخر 90 يوم",
+  "rangeCustom": "مخصصة",
+  "pastoralVisitGeneral": "افتقاد رعوي",
+  "visitOutcomeBoth": "أثمر الافتقاد: حضر القداس والخدمة 🌟",
+  "visitOutcomeServiceOnly": "أثمر الافتقاد: حضر الخدمة فقط ✅",
+  "visitOutcomeMassOnly": "أثمر الافتقاد: حضر القداس الإلهي فقط ✅",
+  "visitOutcomeMissed": "غائب عن القداس والخدمة ⚠️ (يحتاج متابعة)",
+  "visitOutcomePending": "في انتظار الجمعة القادمة ⏳",
+  "visitOutcomeNoData": "لم تُسجل جلسات حضور في هذه الجمعة",
+  "visitingServantLabel": "الخادم القائم بالافتقاد: ",
+  "assignedKhademPlaceholder": "الخادم المسؤول",
+  "visitReportNotesHeader": "ما دار في الافتقاد وملاحظات الخادم:",
+  "editNoteAction": "تعديل",
+  "addNoteAction": "إضافة",
+  "visitNoDetailedNotes": "تم الافتقاد بنجاح (لم تُسجل ملاحظات تفصيلية)",
+  "visitOutcomeHeader": "أثر الافتقاد (جمعة {date}):",
+  "@visitOutcomeHeader": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "attendedMassAndService": "حاضر قداس وخدمة ✅",
+  "attendedPartial": "حضور جزئي",
+  "absentBoth": "غائب ❌",
+  "massLabel": "القداس",
+  "serviceLabel": "الخدمة",
+  "precededByVisitNote": "سبق هذه الجمعة افتقاد ({date})",
+  "@precededByVisitNote": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "noEventsMatchingFilter": "لا توجد أحداث مطابقة للفلاتر المختارة",
+  "editVisitNotesTitle": "تعديل ملاحظات الافتقاد",
+  "editVisitNotesSubtitle": "اكتب ما دار في الافتقاد وتفاصيل الزيارة لمتابعة المخدوم بدقة:",
+  "editVisitNotesHint": "تفاصيل الافتقاد وما تم التحدث بشأنه...",
+  "visitNotesUpdatedSuccess": "تم حفظ ملاحظات الافتقاد بنجاح",
+  "errorUpdatingNotes": "حدث خطأ أثناء حفظ الملاحظات: {err}",
+  "@errorUpdatingNotes": {
+    "placeholders": {
+      "err": {
+        "type": "String"
+      }
+    }
+  },
+  "copyPhoneAction": "نسخ الرقم",
+  "retryAction": "إعادة المحاولة",
+  "@visitsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "@studentsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "@servantsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "message1stSecondary": "أولى ثانوي",
+  "message2ndSecondary": "تانية ثانوي",
+  "message3rdSecondary": "تالتة ثانوي",
+  "messageAllGrades": "كل المرحلة",
+  "messageSecondary": "ثانوي",
+  "message1st": "1ث",
+  "message2nd": "2ث",
+  "message3rd": "3ث",
+  "messageStageAdministrator": "أمين المرحلة",
+  "messageGradeAdministrator": "أمين السنة",
+  "messageServant": "خادم",
+  "messagePending": "في الانتظار",
+  "messageServiceAttendance": "حضور الخدمة",
+  "messageMassAttendance": "حضور القداس",
+  "messageVisitationTask": "تكليف افتقاد",
+  "messageGeneralTask": "مهمة عامة",
+  "messageHomeVisit": "زيارة منزلية",
+  "messagePhoneCall": "مكالمة هاتفية",
+  "messageChurchMeetup": "لقاء بالكنيسة",
+  "messageOther": "أخرى",
+  "messageVisit": "زيارة",
+  "messageFullName": "الاسم رباعي",
+  "messageDateOfBirthYyyyMmDd": "تاريخ الميلاد (YYYY-MM-DD)",
+  "messageTrackingStartDateYyyyMmDd": "تاريخ بدء التتبع (YYYY-MM-DD)",
+  "messageAge": "العمر",
+  "messageStudentPhone": "رقم تليفون المخدوم",
+  "messageFatherPhone": "رقم تليفون الأب",
+  "messageMotherPhone": "رقم تليفون الأم",
+  "messageDetailedAddress": "العنوان بالتفصيل",
+  "messageArea": "المنطقة",
+  "messageSchool": "المدرسة",
+  "messageSecondaryType": "نوع الثانوية",
+  "messageHomeLocationMapsLink": "لوكيشن البيت (رابط خرائط)",
+  "messageBrethrenOfLordYesNo": "أخوة رب (نعم/لا)",
+  "messageStudentPhotoUrl": "رابط صورة المخدوم",
+  "messageNotes": "ملاحظات",
+  "messageAssignedServant": "الخادم المسؤول",
+  "messageVisitsCount": "عدد الافتقادات",
+  "messageLastVisitDate": "تاريخ آخر افتقاد",
+  "messageYes": "نعم",
+  "messageNo": "لا",
+  "messageUnassigned": "غير مربوط",
+  "messageNotVisited": "لم يُفتقد",
+  "messageYears": "سنة",
+  "messageStudentsData": "بيانات_المخدومين",
+  "messageStudentsTemplate": "قالب_المخدومين",
+  "messageMainMenu": "القائمة الرئيسية",
+  "messageMakhdomeen": "المخدومين",
+  "messageMyStudents": "مخدوميني",
+  "messageMyTasks": "مهامي",
+  "messageAccountDeletionInProgress": "حذف الحساب قيد التنفيذ",
+  "messageUnableToLoadProfile": "تعذر تحميل الملف الشخصي",
+  "messageYourDeletionRequestIsSavedYouCan": "طلب الحذف محفوظ. يمكنك الخروج ومتابعة الحالة لاحقاً.",
+  "messageRetry": "إعادة المحاولة",
+  "messageStudentsImportTemplateXlsx": "قالب_إضافة_المخدومين.xlsx",
+  "messageExcelTemplateForImportingStudentsInEfteqad": "قالب إكسيل لإضافة المخدومين في تطبيق افتقاد",
+  "messageStudentsReportEfteqad": "تقرير المخدومين - تطبيق افتقاد",
+  "messageFailedToLoadAttendanceSessions": "تعذر تحميل جلسات الحضور",
+  "messageLast90Days": "آخر 90 يوماً",
+  "messageEn": "ar",
+  "messageSession": "جلسة",
+  "messageAbsenceAlert": "⚠️ تنبيه غياب: {value0}",
+  "@messageAbsenceAlert": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageStudentMissedFridaysPleaseVisitSoon": "المخدوم غائب لـ {value0} جمعات متتالية. يرجى الافتقاد العاجل.",
+  "@messageStudentMissedFridaysPleaseVisitSoon": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageUrgentAlertSentTo": "تم إرسال تنبيه عاجل للخادم ({value0}) بنجاح! 🔔",
+  "@messageUrgentAlertSentTo": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageNotify": "تنبيه الخادم",
+  "messageS": "خ",
+  "messageUpdateRecordAndPersonalDetails": "تحديث السجل والبيانات الشخصية",
+  "messageInsertNewMakhdomToCareRegistry": "إدراج مخدوم جديد إلى دفتر الرعاية",
+  "messageFieldsAreLockedUntilConfirmationRetryTo": "البيانات ثابتة حتى تأكيد الحفظ. أعد المحاولة لاستكمال الطلب.",
+  "messageErrorSavingAssignments": "حدث خطأ أثناء الحفظ: {value0}",
+  "@messageErrorSavingAssignments": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageAssignMakhdomeenToServant": "إسناد وتوزيع مخدومين للخادم",
+  "messageSelectionIsLockedUntilConfirmationRetryTo": "التحديد ثابت حتى تأكيد الحفظ. أعد المحاولة لاستكمال الطلب.",
+  "messageGeneratingSharingTemplate": "جارٍ إنشاء ومشاركة القالب...",
+  "messageError": "خطأ: {value0}",
+  "@messageError": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageReadingAndExtractingDataFromFile": "جارٍ قراءة واستخراج البيانات من الملف...",
+  "messageCouldNotImportAnyRowsDueTo": "تعذر استيراد أي مخدوم بسبب أخطاء في الصفوف:\n{value0}",
+  "@messageCouldNotImportAnyRowsDueTo": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageTargetGrade": "السنة المستهدفة: {value0}",
+  "@messageTargetGrade": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageRowsExcluded": "⚠️ تم استبعاد {value0} صفاً:\n{value1}",
+  "@messageRowsExcluded": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      },
+      "value1": {
+        "type": "String"
+      }
+    }
+  },
+  "messageSavingToFirebase": "جارٍ الحفظ في فايربيس...",
+  "messageSavingToFirebase564": "جارٍ الحفظ في فايربيس ({value0} / {value1})...",
+  "@messageSavingToFirebase564": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      },
+      "value1": {
+        "type": "String"
+      }
+    }
+  },
+  "messageLocalRowsExcluded": "صفوف محلية مستبعدة",
+  "messageServerRowsRejected": "صفوف مرفوضة من الخادم",
+  "messageImportFailed": "فشل الاستيراد: {value0}",
+  "@messageImportFailed": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageExportingDataToExcel": "جارٍ تصدير البيانات إلى إكسيل...",
+  "messageExportError": "خطأ أثناء التصدير: {value0}",
+  "@messageExportError": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageBulkDataManagementAndSheetExports": "إدارة البيانات بشكل جماعي واستخراج الشيتات",
+  "messageProcessing": "جارٍ المعالجة...",
+  "messageUnassignStudent": "إلغاء التسكين",
+  "messageAreYouSureYouWantToUnassign": "هل أنت متأكد من إلغاء تسكين {value0} من خادمه الحالي؟",
+  "@messageAreYouSureYouWantToUnassign": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageUnassign": "إلغاء التسكين",
+  "messageM": "م",
+  "messageServant580": "الخادم",
+  "messageSelectAServantToAppointAsGrade": "اختر خادماً لتعيينه أميناً للسنة الدراسية",
+  "messageNoServantsAssignedToYet": "لا يوجد خدام مسكنين في {value0} بعد",
+  "@messageNoServantsAssignedToYet": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageAppointHead": "تعيين كأمين",
+  "messageAssign": "تسكين",
+  "messageChangeHead": "تغيير الأمين",
+  "messageUnspecified": "غير محدد",
+  "messageThisSessionHasBeenFinalizedAndCannot": "تم اعتماد هذه الجلسة ولا يمكن تعديلها.",
+  "messageErrorSavingAttendance": "حدث خطأ أثناء الحفظ: {value0}",
+  "@messageErrorSavingAttendance": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messagePleaseWaitForPendingSavesToFinish": "يرجى الانتظار حتى اكتمال حفظ الطلبات المعلقة.",
+  "messageFinalizeAttendance": "اعتماد الحضور",
+  "messageAreYouSureYouWantToFinalize": "هل أنت متأكد من إنهاء واعتماد كشف الحضور لهذه الجلسة؟ لن يمكن التعديل عليها بعد ذلك.",
+  "messageCancel": "إلغاء",
+  "messageConfirmFinalization": "تأكيد الاعتماد",
+  "messageAttendanceFinalizedSuccessfully": "تم اعتماد كشف الحضور بنجاح.",
+  "messageErrorFinalizingAttendance": "حدث خطأ أثناء اعتماد الحضور: {value0}",
+  "@messageErrorFinalizingAttendance": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageLoading": "جاري التحميل...",
+  "messageFinalized": "معتمد",
+  "messageSaving": "جاري الحفظ...",
+  "messageSaveError": "خطأ في الحفظ",
+  "messageCouldNotLoadRoster": "تعذر تحميل كشف الحضور: {value0}",
+  "@messageCouldNotLoadRoster": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageAttendanceSessionIsFinalizedAndLockedRead": "تم إنهاء واعتماد كشف الحضور لهذه الجلسة. القراءة فقط.",
+  "messageSearchByName": "بحث بالاسم",
+  "messageNotificationsCenter": "مركز الإشعارات",
+  "messageMarkAllRead": "تحديد الكل كمقروء",
+  "messageAccessDenied": "غير مصرح بالوصول",
+  "messageYouDoNotHavePermissionToAccess": "ليس لديك الصلاحيات الكافية للوصول إلى هذه الصفحة.",
+  "messagePageNotFound": "الصفحة غير موجودة",
+  "messageThePageYouAreLookingForDoes": "عذراً، المسار الذي تحاول الوصول إليه غير موجود أو تم نقله.",
+  "messageAnErrorOccurred": "حدث خطأ",
+  "messageGoHome": "الصفحة الرئيسية",
+  "messageNotifications": "الإشعارات والتنبيهات",
+  "messageNotificationsCenter616": "مركز الإشعارات والتنبيهات",
+  "messageJustNow": "الآن",
+  "messageMAgo": "منذ {value0} دقيقة",
+  "@messageMAgo": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageHAgo": "منذ {value0} ساعة",
+  "@messageHAgo": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageDAgo": "منذ {value0} يوم",
+  "@messageDAgo": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageNoNotificationsYet": "لا توجد إشعارات حالياً",
+  "messageTaskAssignmentsAndAlertsWillAppearHere": "ستظهر هنا إشعارات المهام والتنبيهات الموجهة إليك",
+  "messageCouldNotConfirmSaveRetryTheSame": "تعذر تأكيد الحفظ. الطلب ثابت لإعادة المحاولة: {value0}",
+  "@messageCouldNotConfirmSaveRetryTheSame": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageCouldNotLoadLocalDraft": "تعذر تحميل المسودة المحلية: {value0}",
+  "@messageCouldNotLoadLocalDraft": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageLocalSubmissionLoadedConfirmationIsPending": "تم استرجاع طلب محفوظ محلياً يحتاج تأكيد الحفظ",
+  "messageFieldsAreLockedUntilConfirmationRetryTo631": "البيانات ثابتة حتى تأكيد الحفظ. أعد المحاولة لتأكيد نفس الزيارة.",
+  "messageAlertBoysNeedUrgentVisitRepeatedAbsence": "تنبيه: يوجد {value0} من أولادك بحاجة لافتقاد عاجل (غياب متكرر)",
+  "@messageAlertBoysNeedUrgentVisitRepeatedAbsence": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageView": "عرض 👈",
+  "messageAllSessions": "حضور كل الجلسات",
+  "messageAllConsistent": "الكل منتظم 🎉",
+  "messageAbsenceAlert637": "غياب متكرر ⚠️",
+  "messageAttendance75": "حضور ≥ 75%",
+  "messageVisited": "المفتقدون",
+  "messageUnvisited": "غير المفتقدين",
+  "messageAttendanceRatesCurrentlyEqual": "نسب الحضور متساوية حالياً",
+  "messageCall": "اتصال",
+  "messageWhatsapp": "واتساب",
+  "messageVisit644": "افتقاد",
+  "messageBehavioralSegmentation": "التصنيف السلوكي للمتابعة",
+  "messageNoStudentsInThisSegment": "لا يوجد مخدومون في هذا التصنيف",
+  "messageVisits": "افتقاد: {value0}",
+  "@messageVisits": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageAbsenceAlert649": "غياب متكرر ⚠️",
+  "messageVisit650": "افتقاد",
+  "messageBehavioralSegmentation651": "التصنيف السلوكي للأولاد",
+  "messageOfVisited": "{value0} من {value1} مخدوم",
+  "@messageOfVisited": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      },
+      "value1": {
+        "type": "String"
+      }
+    }
+  },
+  "messageConfirmPassword": "تأكيد كلمة المرور",
+  "messageToDeleteYourAccountPleaseEnterYour": "لحذف الحساب، يرجى إدخال كلمة المرور الخاصة بحسابك للتأكيد.",
+  "messagePassword": "كلمة المرور",
+  "messageProceed": "متابعة الحذف",
+  "messageStageAdministratorCannotDeleteAccountBeforeAppointing": "لا يمكن لأمين المرحلة حذف حسابه قبل تعيين أمين مرحلة بديل ومثبت.",
+  "messageTaskDetails": "تفاصيل المهمة",
+  "messageDescription": "الوصف",
+  "messageAssignedServant661": "الخادم المكلف",
+  "messageGrade": "السنة الدراسية",
+  "messageDueDate": "تاريخ الاستحقاق",
+  "messageCreatedBy": "أنشئت بواسطة",
+  "messageOpenAttendanceSheet": "فتح كشف الحضور",
+  "messageCompleted": "مكتملة بنجاح",
+  "messageMarkAsCompleted": "تحديد كمكتملة",
+  "messageAdmin": "أمين الخدمة",
+  "messageYouAreAssignedToTakeServiceAttendance": "تم تكليفك برصد حضور وغياب الخدمة",
+  "messageYouAreAssignedToTakeMassAttendance": "تم تكليفك برصد حضور وغياب القداس الإلهي",
+  "messageAssignedYouANewTask": "قام {value0} بتكليفك بمهمة جديدة",
+  "@messageAssignedYouANewTask": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageNewTask": "مهمة جديدة: {value0} 📋",
+  "@messageNewTask": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageSubmissionIsLockedUntilConfirmationRetryTo": "الطلب ثابت حتى تأكيد الحفظ. أعد المحاولة لتأكيد نفس المهمة.",
+  "messageYouAreOffline": "أنت في وضع عدم الاتصال (أوفلاين)",
+  "messageSyncingPendingChanges": "جاري مزامنة التعديلات المعلقة...",
+  "messageNoServantsAssignedToYetAssignServants": "لا يوجد خدام مسكنين في {value0} بعد.\nقم بتسكين خدام أولاً لتتمكن من تعيين أمين.",
+  "@messageNoServantsAssignedToYetAssignServants": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageCurrentHead": "الأمين الحالي",
+  "messageAssignedSecondaryStageServants": "خدام مرحلة ثانوي المسكنين",
+  "messageServants": "{value0} خادم",
+  "@messageServants": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageNoServantsAssignedToThisSectionYet": "لا يوجد خدام مسكنين في هذا القسم بعد",
+  "messageGradeHead": "أمين سنة",
+  "messageAssignedStudents": "{value0} • {value1} ولد مسند",
+  "@messageAssignedStudents": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      },
+      "value1": {
+        "type": "String"
+      }
+    }
+  },
+  "messageChangeGrade": "تغيير السنة الدراسية",
+  "messageNewServant": "خادم جديد",
+  "messageNoAttendanceSessionsRecordedYet": "لم يتم رصد أي جلسات حضور حتى الآن",
+  "messageWeeklyStatisticsAppearHereAfterRecordingAttendance": "ستظهر الإحصائيات الأسبوعية هنا بعد تسجيل حضور الجمعة",
+  "messageOverallAttendanceRate": "نسبة الحضور العامة",
+  "messageAverageOfRecordedSessions": "متوسط كل الجلسات المسجلة",
+  "messageAttendanceFridays": "عدد جمعات الحضور",
+  "messageServiceMass": "{value0} خدمة • {value1} قداس",
+  "@messageServiceMass": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      },
+      "value1": {
+        "type": "String"
+      }
+    }
+  },
+  "messageAverageSundaySchoolAttendance": "متوسط حضور مدارس الأحد",
+  "messageAverageMassAttendance": "متوسط حضور القداسات",
+  "messageWeeklyAttendanceRecentFridays": "متابعة الحضور أسبوعياً (آخر الجمعات)",
+  "messageMass": "قداس",
+  "messageService": "خدمة",
+  "messageStudents": "{value0} أولاد",
+  "@messageStudents": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageVisitedStudents": "أولاد تم افتقادهم",
+  "messageStudents705": "{value0} ولد",
+  "@messageStudents705": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageUnvisitedStudents": "أولاد لم يُفتقدوا",
+  "messageStudents708": "{value0} ولد",
+  "@messageStudents708": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageStudentAttendanceGroups": "التصنيف السلوكي للأولاد (المجموعات)",
+  "messageNoStudentsInThisGroup": "لا يوجد أولاد في هذه المجموعة",
+  "messageAgeYears": "العمر: {value0} سنة",
+  "@messageAgeYears": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageCalculatedPrecisely": "محسوب بدقة ⚡",
+  "messageAutomatic": "تلقائي ⚡",
+  "messageBirthDate": "تاريخ الميلاد: {value0}/{value1}/{value2}",
+  "@messageBirthDate": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      },
+      "value1": {
+        "type": "String"
+      },
+      "value2": {
+        "type": "String"
+      }
+    }
+  },
+  "messageAgeEstimatedFromSecondaryGrade": "تم حساب السن تلقائياً حسب مرحلة ثانوي ({value0})",
+  "@messageAgeEstimatedFromSecondaryGrade": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageResetToAutomaticCalculation": "إلغاء التخصيص والعودة للحساب التلقائي",
+  "messageYears721": "{value0} سنة",
+  "@messageYears721": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageChooseExactBirthDate": "اختر تاريخ الميلاد الدقيق",
+  "messageExactDate": "تاريخ دقيق...",
+  "messageServantUnavailableInThisList": "خادم غير موجود في القائمة",
+  "messageStudents726": "مخدومي_{value0}",
+  "@messageStudents726": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageAgeEstimatedFrom": "العمر: {value0} (محسوب تلقائياً حسب {value1})",
+  "@messageAgeEstimatedFrom": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      },
+      "value1": {
+        "type": "String"
+      }
+    }
+  },
+  "messageAssignedStudents730": "{value0} • {value1} مخدوم مسكن",
+  "@messageAssignedStudents730": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      },
+      "value1": {
+        "type": "String"
+      }
+    }
+  },
+  "messageChangeGrade732": "تغيير السنة",
+  "messageVisitNotesAndDiscussion": "ملاحظات وما دار في الافتقاد (الديسكريبشن)",
+  "messageRecordVisitDiscussionMeetingDetailsOrPastoral": "اكتب هنا ما دار في الافتقاد، تفاصيل المقابلة، أو أي احتياجات رعوية...",
+  "messageOfStudents": "{value0} من {value1} مخدوم",
+  "@messageOfStudents": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      },
+      "value1": {
+        "type": "String"
+      }
+    }
+  },
+  "messageAttendance": "{value0}% حضور",
+  "@messageAttendance": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageStageServant": "خادم بالمرحلة",
+  "messageDate": "التاريخ: {value0}",
+  "@messageDate": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageSelectDueDateOptional": "تحديد تاريخ المهمة (اختياري)",
+  "messageFriday": "جمعة",
+  "failurePermissionDenied": "ليس لديك صلاحية لتنفيذ هذه العملية.",
+  "failureNetwork": "تعذر الاتصال. تحقق من اتصال الإنترنت وحاول مجدداً.",
+  "failureNotFound": "المورد المطلوب غير موجود أو تم حذفه.",
+  "failureDecode": "تعذر قراءة البيانات. حاول تحميلها مجدداً.",
+  "failureAuthentication": "يرجى تسجيل الدخول مجدداً لتأكيد هويتك.",
+  "stageSuccessorRequired": "يجب تعيين أمين مرحلة بديل نشط ومثبت قبل حذف حسابك.",
+  "channelName": "إشعارات افتقاد والمهام",
+  "channelDescription": "تنبيهات المهام والتكليفات والحضور والغياب",
+  "newNotification": "إشعار جديد 🔔",
+  "secondaryGeneral": "ثانوية عامة",
+  "secondaryTechnical": "صنايع / فني",
+  "secondaryService": "خدمات",
+  "secondaryCommercial": "تجاري",
+  "secondaryOther": "أخرى",
+  "excelSampleSkipped": "تم رصد صف العينة التجريبي ({name}) وتجاهله تلقائياً.",
+  "@excelSampleSkipped": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "excelMissingName": "اسم المخدوم فارغ في الصف {row}",
+  "@excelMissingName": {
+    "placeholders": {
+      "row": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "excelMissingPhone": "رقم تليفون المخدوم فارغ في الصف {row}",
+  "@excelMissingPhone": {
+    "placeholders": {
+      "row": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "excelDuplicatePhone": "تكرار رقم هاتف في الملف ({phone}) للمخدوم ({name})",
+  "@excelDuplicatePhone": {
+    "placeholders": {
+      "phone": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "excelInvalidBirthDate": "تاريخ ميلاد غير صالح: {value}",
+  "@excelInvalidBirthDate": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "excelInvalidTrackingDate": "تاريخ بدء التتبع غير صالح: {value}",
+  "@excelInvalidTrackingDate": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "excelEmptyFailure": "ملف الإكسيل فارغ أو غير صالح.",
+  "excelColumnsFailure": "تعذر العثور على أعمدة الاسم أو الهاتف في الترويسة.",
+  "excelReadFailure": "تعذر قراءة بيانات الملف.",
+  "attendanceFinalizedFailure": "لا يمكن تعديل جلسة حضور تم اعتمادها وإنهاء رصدها.",
+  "pendingSavesFailure": "يوجد طلبات معلقة قيد الحفظ. يرجى الانتظار حتى اكتمالها.",
+  "birthDateCaption": "تاريخ الميلاد: {date}",
+  "@birthDateCaption": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "analyticsDateBounds": "{from} – {to}",
+  "trackingStartLabel": "بدء التتبع: {date}",
+  "trackingStartEstimatedLabel": "بدء التتبع تقديري: {date}",
+  "trackingOriginUnknown": "بدء التتبع غير معروف؛ بيانات الحضور غير كافية.",
+  "loadMore": "عرض المزيد",
+  "secondaryTypeCustomLabel": "نوع الثانوية المخصص",
+  "legacyNotesLabel": "ملاحظات قديمة",
+  "@trackingStartLabel": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "@trackingStartEstimatedLabel": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "@analyticsDateBounds": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      }
+    }
+  },
+  "cachedDataHint": "عرض بيانات مخزنة محليًا؛ في انتظار تأكيد الخادم.",
+  "insufficientDataShort": "غير كافٍ",
+  "followupNotificationTitle": "تنبيه متابعة",
+  "followupNotificationBody": "افتح تطبيق افتقاد لمتابعة أحد مخدوميك."
+}

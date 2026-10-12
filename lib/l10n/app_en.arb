@@ -1,0 +1,1508 @@
+{
+  "@@locale": "en",
+  "appName": "Al-Ra'ey",
+  "save": "Save",
+  "cancel": "Cancel",
+  "delete": "Delete",
+  "edit": "Edit",
+  "back": "Back",
+  "copyAddress": "Copy address",
+  "currentGradeAdmin": "Current grade administrator",
+  "visitReportLabel": "Visit report",
+  "saveFailed": "Could not save. Please try again.",
+  "syncPending": "Saved on this device; waiting to sync",
+  "dataUnavailable": "Could not load data",
+  "insufficientAttendanceData": "Not enough attendance data",
+  "visitsCount": "{count, plural, =0{No visits} =1{1 visit} other{{count} visits}}",
+  "studentsCount": "{count, plural, =0{No students} =1{1 student} other{{count} students}}",
+  "servantsCount": "{count, plural, =0{No servants} =1{1 servant} other{{count} servants}}",
+  "appTagline": "«I am the Good Shepherd»",
+  "shepherdVerse": "«Feed my lambs.. Tend my sheep»",
+  "shepherdVerseShort": "«Be diligent to know the state of your flocks»",
+  "shepherdVerseLong": "«Be diligent to know the state of your flocks, and look well to your herds»",
+  "shepherdVerseGoodShepherd": "«The good shepherd gives His life for the sheep»",
+  "version": "Version {ver}",
+  "@version": {
+    "placeholders": {
+      "ver": {
+        "type": "String"
+      }
+    }
+  },
+  "confirm": "Confirm",
+  "or": "OR",
+  "all": "All",
+  "search": "Search...",
+  "notes": "Notes",
+  "address": "Address",
+  "area": "Area",
+  "school": "School",
+  "phone": "Phone Number",
+  "continueWithGoogle": "Continue with Google",
+  "adminSignInButton": "Admin Sign In",
+  "adminSignInTitle": "Admin Sign In",
+  "adminSignInSubtitle": "Enter password for administrative access",
+  "adminEmailLabel": "Admin Email",
+  "passwordLabel": "Password",
+  "enterDashboardButton": "Enter Dashboard",
+  "pleaseFillAllFields": "Please fill in all fields",
+  "loginFailedCheckCredentials": "Sign in failed: Check email and password",
+  "loginError": "Sign in error: {err}",
+  "@loginError": {
+    "placeholders": {
+      "err": {
+        "type": "String"
+      }
+    }
+  },
+  "headServant": "Head Servant",
+  "servant": "Servant",
+  "adminRole": "Admin",
+  "servantRole": "Servant",
+  "mainDashboard": "Main Dashboard",
+  "excelTools": "Excel Tools (Import & Export)",
+  "myGroupAndVisits": "My Group & Visits",
+  "servantProfile": "Servant Profile",
+  "generalSettings": "General Settings",
+  "signOut": "Sign Out",
+  "signOutConfirmTitle": "Sign Out Confirmation",
+  "signOutConfirmMsg": "Are you sure you want to sign out of the application?",
+  "settingsTitle": "Settings",
+  "appearanceSection": "Appearance & Theme",
+  "darkMode": "Dark Mode",
+  "lightMode": "Light Mode",
+  "darkModeDesc": "Gentle on your eyes in low light",
+  "lightModeDesc": "Crisp and comfortable daytime colors",
+  "languageSection": "Language",
+  "arabicLang": "العربية (Arabic)",
+  "arabicLangDesc": "Default language with RTL",
+  "englishLang": "English (الإنجليزية)",
+  "englishLangDesc": "Switch interface language",
+  "aboutSection": "About App & Service",
+  "aboutServiceDesc": "Dedicated to the pastoral care and visitation of Pope Kyrillos VI class, empowering servants and head servant to minister to every soul with love and faithfulness.",
+  "accountSection": "Account Management",
+  "signOutAccountDesc": "Sign out of current account and return to login screen",
+  "deleteAccount": "Permanently Delete Account",
+  "deleteAccountDesc": "Delete servant profile and unassign all makhdomeen",
+  "deleteAccountWarningTitle": "Delete Account Permanently",
+  "deleteAccountWarningPrompt": "You are about to permanently delete your account from Efteqad system.",
+  "deleteAccountPoints": "• All makhdomeen assigned to you will be released to unassigned pool for redistribution.\n• Your profile will be permanently deleted from database.\n• This action cannot be undone.",
+  "deleteAccountConfirmBtn": "Yes, Delete Account",
+  "accountDeletedSuccess": "Account deleted successfully",
+  "deleteAccountFailed": "Failed to delete account: {err} (Re-login may be required for security verification)",
+  "@deleteAccountFailed": {
+    "placeholders": {
+      "err": {
+        "type": "String"
+      }
+    }
+  },
+  "profileTitle": "Profile",
+  "verifiedServantBadge": "Verified Servant",
+  "assignedCountInCare": "{count} makhdomeen in your care",
+  "@assignedCountInCare": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "personalInfoSection": "Personal Information",
+  "servantFullNameLabel": "Servant Full Name",
+  "servantNameRequired": "Please enter servant name",
+  "servantPhoneLabel": "Mobile Phone Number",
+  "servantPhoneRequired": "Please enter phone number",
+  "googleEmailLabel": "Email (Google Account)",
+  "emailReadOnlyNote": "Email is associated with your Google account and cannot be modified",
+  "saveChanges": "Save Changes",
+  "profileUpdatedSuccess": "Your profile has been updated successfully!",
+  "profileUpdateError": "Error updating profile: {err}",
+  "@profileUpdateError": {
+    "placeholders": {
+      "err": {
+        "type": "String"
+      }
+    }
+  },
+  "servantGreeting": "Peace & Grace, Mr. {name}",
+  "@servantGreeting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "visitedRatio": "Visited {v} of {t} makhdomeen",
+  "@visitedRatio": {
+    "placeholders": {
+      "v": {
+        "type": "int",
+        "format": "decimalPattern"
+      },
+      "t": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "searchMyMakhdomeen": "Search makhdomeen by name or area...",
+  "filterVisited": "Visited",
+  "filterUnvisited": "Not Visited",
+  "filterBrethren": "Brethren of the Lord",
+  "filterMyMakhdomeen": "My Makhdomeen",
+  "noMakhdomeenAssignedTitle": "No makhdomeen assigned to you yet",
+  "noMakhdomeenAssignedSubtitle": "The head servant will distribute makhdomeen to you soon",
+  "logVisitTitle": "Log New Visit",
+  "visitTypeLabel": "Visit Type:",
+  "visitHome": "🏠 Home Visit",
+  "visitPhone": "📞 Phone Call",
+  "visitChurch": "⛪ Church Meeting",
+  "visitOther": "💬 Message / Other",
+  "visitDateLabel": "Visit Date: {date}",
+  "@visitDateLabel": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "visitNotesHint": "Visit notes (optional)...",
+  "saveVisitBtn": "Save Visit",
+  "visitSavedSuccess": "Visit logged successfully! ✝️",
+  "visitSaveError": "Error logging visit: {err}",
+  "@visitSaveError": {
+    "placeholders": {
+      "err": {
+        "type": "String"
+      }
+    }
+  },
+  "adminDashboardTitle": "Admin Dashboard",
+  "makhdomeenAndKhodamSummary": "{m} Makhdomeen • {k} Servants",
+  "@makhdomeenAndKhodamSummary": {
+    "placeholders": {
+      "m": {
+        "type": "int",
+        "format": "decimalPattern"
+      },
+      "k": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "tabMakhdomeen": "Makhdomeen ({count})",
+  "@tabMakhdomeen": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "tabAnalytics": "Analytics & Insights",
+  "tabKhodam": "Servants ({count})",
+  "@tabKhodam": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "searchAdminHint": "Search by name, area, phone, or school...",
+  "filterUnassigned": "Unassigned",
+  "deleteMakhdomTitle": "Confirm Deletion",
+  "deleteMakhdomPrompt": "Are you sure you want to permanently delete ({name})?",
+  "@deleteMakhdomPrompt": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "makhdomDeletedSuccess": "Makhdom deleted successfully",
+  "makhdomUnassignedSuccess": "({name}) unassigned from servant",
+  "@makhdomUnassignedSuccess": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "noSearchResults": "No results matching search or filter",
+  "assignSelectedMakhdomeen": "Assign Selected",
+  "totalCountBadge": "Total",
+  "addMakhdomBtn": "Add Makhdom",
+  "servantGroupHeader": "{name}'s Group",
+  "@servantGroupHeader": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "servantGroupSubheader": "Tap to select and assign children to this servant",
+  "assignChildrenBtn": "Assign Children",
+  "noMatchingMakhdomeenPrompt": "Try changing search keywords or choosing another filter",
+  "brethrenBadge": "Brethren of the Lord",
+  "unassignedBadge": "Unassigned",
+  "servantBadge": "Servant: {name}",
+  "@servantBadge": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "notVisitedYetBadge": "Not Visited Yet",
+  "lastVisitBadge": "Last: {date} ({count} visits)",
+  "@lastVisitBadge": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "visitCountSummary": "{count, plural, =0{No visits} =1{1 visit} other{{count} visits}}",
+  "@visitCountSummary": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "details": "Details",
+  "less": "Less",
+  "callAction": "Call",
+  "whatsappAction": "WhatsApp",
+  "mapAction": "Map",
+  "visitAction": "Visit",
+  "familyDetails": "Family Details",
+  "fatherPhoneLabel": "Father Phone:",
+  "motherPhoneLabel": "Mother Phone:",
+  "addressLabel": "Address:",
+  "schoolLabel": "School:",
+  "birthDateDetailLabel": "Birth Date:",
+  "ageYearsOld": "{age} yrs",
+  "@ageYearsOld": {
+    "placeholders": {
+      "age": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "notesLabel": "Notes:",
+  "editDetailsAction": "Edit Details",
+  "unassignServantAction": "Unassign from Servant",
+  "deleteMakhdomAction": "Delete Makhdom",
+  "historyAction": "Visits & Attendance History",
+  "makhdomHistorySubtitle": "Detailed pastoral visits, attendance & impact history",
+  "totalVisitsLabel": "Total Visits",
+  "massAttendanceLabel": "Mass Attendance",
+  "serviceAttendanceLabel": "Service Attendance",
+  "visitSuccessRateLabel": "Visit Impact",
+  "filterAllLabel": "All",
+  "filterVisitsLabel": "Visits Only",
+  "filterAttendanceLabel": "Attendance Only",
+  "filterFruitfulLabel": "Fruitful (Attended Next Friday) ✅",
+  "filterAbsencesLabel": "Absences ❌",
+  "filterAllTime": "All Time",
+  "filterLast30Days": "Last 30 Days",
+  "filterLast90Days": "Last 3 Months",
+  "filterCustomDate": "Custom Period...",
+  "nextFridayTitle": "Next Friday Following Visit",
+  "fruitfulVisitBadge": "Fruitful Visit: Attended Mass & Service 🌟",
+  "attendedServiceOnlyBadge": "Attended Service Only",
+  "attendedMassOnlyBadge": "Attended Mass Only",
+  "missedNextFridayBadge": "Missed Mass & Service ⚠️",
+  "pendingNextFridayBadge": "Pending Upcoming Friday ⏳",
+  "noSessionsNextFridayBadge": "No Sessions Recorded",
+  "fridayRecordTitle": "Friday Attendance",
+  "attendedMassStatus": "Mass: Present ✅",
+  "absentMassStatus": "Mass: Absent ❌",
+  "attendedServiceStatus": "Service: Present ✅",
+  "absentServiceStatus": "Service: Absent ❌",
+  "precededByVisitBadge": "✨ Preceded by visit ({type}) by {servant} on {date}",
+  "@precededByVisitBadge": {
+    "placeholders": {
+      "type": {
+        "type": "String"
+      },
+      "servant": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "noRecordsFoundForFilter": "No records matching selected filters",
+  "logNewVisitButton": "Log New Visit",
+  "makhdomProfileDetails": "Full Student Profile",
+  "makhdomProfileHide": "Hide Details",
+  "makhdomProfileShow": "Show All Details",
+  "academicAndAgeInfo": "Education, Grade & Age",
+  "residenceAndAddressInfo": "Residence, Address & Map",
+  "familyAndContactsInfo": "Family Contacts & Phones",
+  "registrationDateLabel": "Enrolled in Service:",
+  "estimatedAgeLabel": "Estimated Age",
+  "realBirthDateLabel": "Verified Birth Date",
+  "notSpecified": "Not Specified",
+  "openInGoogleMaps": "Open in Google Maps",
+  "pastoralNotes": "Pastoral Notes",
+  "fatherLabel": "Father",
+  "motherLabel": "Mother",
+  "studentPhoneLabel": "Student Phone",
+  "copyPhoneSuccess": "Phone copied successfully",
+  "copyAddressSuccess": "Address copied successfully",
+  "editMakhdomTitle": "Edit Makhdom",
+  "addMakhdomTitle": "Add New Makhdom",
+  "personalAndContactSec": "Personal & Contact Info",
+  "fullNameRequiredLabel": "Full Name *",
+  "fullNameValidation": "Please enter makhdom full name",
+  "makhdomPhoneLabel": "Makhdom Phone",
+  "birthDateInputLabel": "Date of Birth",
+  "selectBirthDateHint": "Tap to select date of birth",
+  "phoneRequired": "Phone number is required",
+  "saving": "Saving...",
+  "fatherPhoneInputLabel": "Father Phone",
+  "motherPhoneInputLabel": "Mother Phone",
+  "residenceAndSchoolSec": "Residence & Education",
+  "residentialAreaLabel": "Residential Area",
+  "detailedAddressLabel": "Detailed Address",
+  "schoolNameInputLabel": "School Name",
+  "secondaryTypeInputLabel": "Secondary Education Type",
+  "googleMapsUrlLabel": "Home Location (Google Maps URL)",
+  "useCurrentLocation": "Use Current Location",
+  "locationPermissionDenied": "Location permission denied",
+  "locationPermissionPermanentlyDenied": "Location permission permanently denied. Please enable it in settings",
+  "openSettings": "Settings",
+  "locationFetchedSuccess": "✓ Location fetched successfully",
+  "locationError": "Location error",
+  "serviceAndCareSec": "Service, Assignment & Care",
+  "assignedServantSelectLabel": "Assigned Servant",
+  "unassignedNoServantOption": "Unassigned (No Servant)",
+  "brethrenSwitchLabel": "Brethren of the Lord (Special Care)",
+  "brethrenSwitchSublabel": "Flag for special love and pastoral priority",
+  "photoUrlOptionalLabel": "Photo URL (optional)",
+  "additionalNotesOptionalLabel": "Additional Notes (optional)",
+  "makhdomSavedSuccess": "Makhdom saved successfully",
+  "makhdomSaveError": "Error saving makhdom: {err}",
+  "@makhdomSaveError": {
+    "placeholders": {
+      "err": {
+        "type": "String"
+      }
+    }
+  },
+  "assignModalHeader": "Assign Makhdomeen to {name}",
+  "@assignModalHeader": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "selectAll": "Select All",
+  "deselectAll": "Deselect All",
+  "searchByNameOrArea": "Search by name or area...",
+  "conflictWarningTitle": "Reassignment Alert",
+  "conflictWarningSubtitle": "Some selected makhdomeen are already assigned to other servants. Transfer them?",
+  "conflictWarningTransferCount": "You are about to reassign {count} makhdomeen currently with other servants to ({name}):",
+  "@conflictWarningTransferCount": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "confirmTransferQuestion": "Are you sure you want to transfer them and update database?",
+  "otherServant": "Other Servant",
+  "resultsCount": "Results: {count}",
+  "@resultsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "saveAssignmentsWithCount": "Save Assignments ({count} Makhdomeen)",
+  "@saveAssignmentsWithCount": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "conflictTransferBtn": "Yes, Confirm Transfer",
+  "conflictKeepBtn": "Cancel",
+  "saveAssignmentsBtn": "Save Assignments",
+  "assignmentsSavedSuccess": "Assignments updated and saved successfully",
+  "excelSheetTitle": "Excel Data Management",
+  "excelDownloadTemplate": "Download Blank Excel Template",
+  "excelDownloadTemplateDesc": "Ready template with pre-set columns to fill easily",
+  "excelImportMakhdomeen": "Import Makhdomeen from Excel",
+  "excelImportMakhdomeenDesc": "Parse Excel file and import makhdomeen to database",
+  "excelExportMakhdomeen": "Export Makhdomeen to Excel",
+  "excelExportMakhdomeenDesc": "Download spreadsheet with all makhdomeen and visits",
+  "excelConfirmImportTitle": "Confirm Import",
+  "excelConfirmImportPrompt": "Found ({count}) makhdomeen in sheet. Do you want to import them now?",
+  "@excelConfirmImportPrompt": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "excelImportNowBtn": "Import Now",
+  "excelImportSuccessMsg": "Imported ({count}) makhdomeen successfully!",
+  "@excelImportSuccessMsg": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "excelEmptyOrCanceled": "No makhdomeen found in file or selection cancelled",
+  "performanceAndCareIndicators": "Performance & Care Indicators",
+  "liveFollowupAndRates": "Live tracking & servant achievement rates",
+  "noAnalyticsData": "Not enough data to display analytics",
+  "totalMakhdomeenStat": "Total Makhdomeen",
+  "visitedAtLeastOnceStat": "Visited",
+  "neverVisitedStat": "Never Visited",
+  "brethrenStat": "Brethren of the Lord",
+  "overallVisitRate": "Overall Visit Rate",
+  "servantsLeaderboard": "Servants Leaderboard",
+  "rankedByVisitRate": "Servants ranked by group visit completion",
+  "urgentFollowupNeverVisited": "Urgent Follow-up: Never Visited",
+  "urgentCountNeedingVisit": "{count} makhdomeen need urgent visit",
+  "@urgentCountNeedingVisit": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "activeServantsStat": "Active Servants",
+  "totalMakhdomeenTitle": "Total Makhdomeen",
+  "totalBoysAssignedSubtitle": "{count} assigned",
+  "@totalBoysAssignedSubtitle": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "visitationRateTitle": "Visitation Rate",
+  "visitedBoysCountSubtitle": "{count} visited",
+  "@visitedBoysCountSubtitle": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "neverVisitedTitle": "Never Visited",
+  "needsUrgentVisitSubtitle": "Needs urgent visit",
+  "brethrenOfLordTitle": "Brethren of the Lord",
+  "specialFollowupSubtitle": "Special follow-up",
+  "visitationDistributionTitle": "Visitation Distribution",
+  "servantsAchievementRatesTitle": "Servants Achievement Rates",
+  "noKhodamYet": "No servants registered yet",
+  "unvisitedChildrenHeader": "Unvisited Students ({count})",
+  "@unvisitedChildrenHeader": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "assignedToKhademLabel": "Assigned to: {name}",
+  "@assignedToKhademLabel": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "noKhodamRegisteredYet": "No Servants Registered Yet",
+  "khodamAutoAppearNote": "Servants will automatically appear here once they sign in with their Google account.",
+  "assignMakhdomeenActionBtn": "Assign Makhdomeen",
+  "assignedMakhdomeenCount": "{count} assigned",
+  "@assignedMakhdomeenCount": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "visitedOfTotalCount": "{v} of {t} visited",
+  "@visitedOfTotalCount": {
+    "placeholders": {
+      "v": {
+        "type": "int",
+        "format": "decimalPattern"
+      },
+      "t": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "grade1stName": "1st Secondary",
+  "grade2ndName": "2nd Secondary",
+  "grade3rdName": "3rd Secondary",
+  "allGrades": "All Grades",
+  "gradeLabel": "Grade",
+  "stageAdminTitle": "Secondary Stage Head",
+  "gradeAdminTitle": "{grade} Head",
+  "@gradeAdminTitle": {
+    "placeholders": {
+      "grade": {
+        "type": "String"
+      }
+    }
+  },
+  "servantRoleLabel": "Servant",
+  "pendingRoleLabel": "Pending",
+  "pendingWelcome": "Welcome Servant of Christ to Secondary Ministry ✝️",
+  "pendingStatusTitle": "Awaiting Stage Assignment",
+  "pendingStatusDesc": "Your account is registered. The Secondary Stage Head will assign you to your grade (1st, 2nd, or 3rd) soon.",
+  "completeProfilePrompt": "Please confirm your information for easy identification:",
+  "updateAndSave": "Update & Save",
+  "stageDashboardTitle": "Secondary Stage Leadership",
+  "tabGradesAndServants": "Servants & Grades",
+  "tabStageAnalytics": "Stage Analytics",
+  "tabStageTasks": "Stage Tasks",
+  "pendingServantsSection": "New Servants Awaiting Assignment",
+  "gradeHeadsSection": "Grade Heads",
+  "appointGradeHeadBtn": "Appoint Head",
+  "changeGradeHeadBtn": "Change Head",
+  "noGradeHeadAssigned": "No head appointed yet",
+  "assignServantToGradePrompt": "Assign Servant to Grade",
+  "selectGradePrompt": "Select Grade:",
+  "servantAssignedSuccess": "Servant assigned successfully!",
+  "gradeHeadUpdatedSuccess": "Grade head appointed successfully!",
+  "gradeDashboardTitle": "{grade} Leadership",
+  "@gradeDashboardTitle": {
+    "placeholders": {
+      "grade": {
+        "type": "String"
+      }
+    }
+  },
+  "tabGradeMakhdomeen": "Makhdomeen",
+  "tabGradeAnalytics": "Analytics",
+  "tabGradeServants": "Grade Servants",
+  "tabGradeTasks": "Grade Tasks",
+  "myTasksTitle": "My Assigned Tasks",
+  "addTaskTitle": "Add New Task",
+  "taskTitleLabel": "Task Title *",
+  "taskTitleRequired": "Please enter task title",
+  "taskDescLabel": "Task Details (optional)",
+  "taskAssigneeLabel": "Assigned Servant *",
+  "taskTypeLabel": "Task Type",
+  "taskTypeGeneral": "General Task",
+  "taskTypeAttendance": "Attendance Tracking",
+  "taskTypeVisitation": "Special Visit",
+  "taskCreatedSuccess": "Task created successfully!",
+  "noTasksYet": "No tasks assigned yet",
+  "completedTasksSection": "Completed Tasks",
+  "pendingTasksSection": "Pending Tasks",
+  "taskCompletedMsg": "Task marked as completed! ✝️",
+  "taskReopenedMsg": "Task reopened",
+  "reopenAttendance": "Reopen attendance",
+  "reopenAttendanceAction": "Reopen",
+  "reopenReason": "Reason for reopening",
+  "deleteTaskPrompt": "Delete this task permanently?",
+  "taskTypeAttendanceKhedma": "Service Attendance",
+  "taskTypeAttendanceQoddas": "Mass Attendance",
+  "takeAttendanceAction": "Take Attendance 📋",
+  "attendanceScreenTitleService": "Service Attendance",
+  "attendanceScreenTitleMass": "Mass Attendance",
+  "totalAttendedCount": "Attended: {attended} / {total}",
+  "@totalAttendedCount": {
+    "placeholders": {
+      "attended": {
+        "type": "int",
+        "format": "decimalPattern"
+      },
+      "total": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "selectedAttendedHeader": "Currently Attending",
+  "noAttendedYetHint": "No students marked yet • Check below",
+  "searchAttendanceHint": "Search by name or phone...",
+  "fridayOnlyWarning": "Attendance is recorded on Fridays only",
+  "scheduleMassAttendanceBtn": "Schedule Friday Mass Attendance ⛪",
+  "scheduleMassAttendanceTitle": "Schedule Secondary Mass Attendance",
+  "scheduleMassAttendanceSubtitle": "Choose the Friday date and servant to take attendance for all grades",
+  "notAuthorizedAttendance": "Sorry, this task is assigned to another servant",
+  "autoSavedNotice": "Auto-saved in real time",
+  "tabVisitsAnalytics": "Visitation",
+  "tabAttendanceAnalytics": "Attendance",
+  "tabSmartInsights": "Insights & Alerts 🧠",
+  "absenceAlertsHeader": "Consecutive Absence Alerts",
+  "absenceAlertsSubtitle": "Students missing 2+ consecutive Fridays needing urgent attention",
+  "missedFridaysCount": "Missed {count} consecutive Fridays",
+  "@missedFridaysCount": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "criticalAbsenceBadge": "Critical Dropout Risk 🚨",
+  "warningAbsenceBadge": "Consecutive Absence Warning ⚠️",
+  "visitationImpactHeader": "Visitation Impact on Attendance 💡",
+  "visitationImpactSubtitle": "Attendance comparison between visited and unvisited students",
+  "visitationImpactValue": "Attendance difference associated with visits: {impact} percentage points (does not establish causation)",
+  "@visitationImpactValue": {
+    "placeholders": {
+      "impact": {
+        "type": "double",
+        "format": "decimalPatternDigits",
+        "optionalParameters": {
+          "decimalDigits": 1
+        }
+      }
+    }
+  },
+  "segmentConsistent": "Consistent 🌟",
+  "segmentIrregular": "Irregular 🔄",
+  "segmentAtRisk": "At-Risk 🚨",
+  "servantMyAnalytics": "My Analytics",
+  "servantGroupAttendanceRate": "Group Attendance Rate",
+  "servantGroupVisitationProgress": "Group Visitation Progress",
+  "urgentVisitationNeeded": "Urgent Visit Needed",
+  "noAbsenceAlerts": "No absence alerts currently • Everyone is consistent 🎉",
+  "allDetailsAction": "View All Details",
+  "hideDetailsAction": "Hide Details",
+  "assignedKhademLabel": "Assigned Servant",
+  "generalNotesTitle": "General Notes",
+  "overallAttendanceTitle": "Overall Attendance",
+  "totalVisitsTitle": "Total Visits",
+  "consecutiveAbsenceTitle": "Consecutive Absences",
+  "massAndServiceRatesTitle": "Mass & Service Rates",
+  "visitationCorrelationTitle": "Visitation Correlation",
+  "visitationCorrelationBody": "Attendance difference following visits: {diff} percentage points (an association, without implying causality).",
+  "@visitationCorrelationBody": {
+    "placeholders": {
+      "diff": {
+        "type": "String"
+      }
+    }
+  },
+  "insufficientHistoryDataHint": "No eligible completed service sessions in this period.",
+  "daysSinceLastVisit": "{days, plural, =0{Today} =1{1 day ago} other{{days} days ago}}",
+  "@daysSinceLastVisit": {
+    "placeholders": {
+      "days": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "noVisitsYet": "No visits yet",
+  "noConsecutiveAbsences": "Consistent",
+  "criticalAbsenceAlert": "Critical dropout risk 🚨",
+  "warningAbsenceAlert": "Urgent visit needed ⚠️",
+  "attendanceRatio": "{attended} of {eligible} sessions",
+  "@attendanceRatio": {
+    "placeholders": {
+      "attended": {
+        "type": "int",
+        "format": "decimalPattern"
+      },
+      "eligible": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "massRateSubtitle": "Mass attendance {rate}%",
+  "@massRateSubtitle": {
+    "placeholders": {
+      "rate": {
+        "type": "String"
+      }
+    }
+  },
+  "filterAllEvents": "All Events",
+  "filterVisitsOnly": "Visits Only",
+  "filterAttendanceOnly": "Attendance Only",
+  "filterFruitfulOnly": "Fruitful Only",
+  "filterAbsencesOnly": "Absences Only",
+  "rangeAllTime": "All Time",
+  "rangeLast30Days": "Last 30 Days",
+  "rangeLast90Days": "Last 90 Days",
+  "rangeCustom": "Custom",
+  "pastoralVisitGeneral": "Pastoral Visit",
+  "visitOutcomeBoth": "Fruitful visit: Attended Mass & Service 🌟",
+  "visitOutcomeServiceOnly": "Fruitful visit: Attended Service only ✅",
+  "visitOutcomeMassOnly": "Fruitful visit: Attended Mass only ✅",
+  "visitOutcomeMissed": "Missed Mass and Service ⚠️ (Needs follow-up)",
+  "visitOutcomePending": "Awaiting next Friday ⏳",
+  "visitOutcomeNoData": "No attendance recorded this Friday",
+  "visitingServantLabel": "Visiting servant: ",
+  "assignedKhademPlaceholder": "Assigned servant",
+  "visitReportNotesHeader": "Visit Report & Servant Notes:",
+  "editNoteAction": "Edit",
+  "addNoteAction": "Add",
+  "visitNoDetailedNotes": "Visit completed (No detailed notes recorded)",
+  "visitOutcomeHeader": "Visit outcome (Friday {date}):",
+  "@visitOutcomeHeader": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "attendedMassAndService": "Attended Mass & Service ✅",
+  "attendedPartial": "Partial Attendance",
+  "absentBoth": "Absent ❌",
+  "massLabel": "Mass",
+  "serviceLabel": "Service",
+  "precededByVisitNote": "Preceded by a visit ({date})",
+  "@precededByVisitNote": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "noEventsMatchingFilter": "No events matching selected filters",
+  "editVisitNotesTitle": "Edit Visit Notes",
+  "editVisitNotesSubtitle": "Record visit discussion details to accurately follow up:",
+  "editVisitNotesHint": "Details of the visit and discussion...",
+  "visitNotesUpdatedSuccess": "Visit notes saved successfully",
+  "errorUpdatingNotes": "Error updating notes: {err}",
+  "@errorUpdatingNotes": {
+    "placeholders": {
+      "err": {
+        "type": "String"
+      }
+    }
+  },
+  "copyPhoneAction": "Copy phone",
+  "retryAction": "Retry",
+  "@visitsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "@studentsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "@servantsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "message1stSecondary": "1st Secondary",
+  "message2ndSecondary": "2nd Secondary",
+  "message3rdSecondary": "3rd Secondary",
+  "messageAllGrades": "All Grades",
+  "messageSecondary": "Secondary",
+  "message1st": "1st",
+  "message2nd": "2nd",
+  "message3rd": "3rd",
+  "messageStageAdministrator": "Stage Administrator",
+  "messageGradeAdministrator": "Grade Administrator",
+  "messageServant": "Servant",
+  "messagePending": "Pending",
+  "messageServiceAttendance": "Service attendance",
+  "messageMassAttendance": "Mass attendance",
+  "messageVisitationTask": "Visitation Task",
+  "messageGeneralTask": "General Task",
+  "messageHomeVisit": "Home Visit",
+  "messagePhoneCall": "Phone Call",
+  "messageChurchMeetup": "Church Meetup",
+  "messageOther": "Other",
+  "messageVisit": "Visit",
+  "messageFullName": "Full Name",
+  "messageDateOfBirthYyyyMmDd": "Date of Birth (YYYY-MM-DD)",
+  "messageTrackingStartDateYyyyMmDd": "Tracking Start Date (YYYY-MM-DD)",
+  "messageAge": "Age",
+  "messageStudentPhone": "Student Phone",
+  "messageFatherPhone": "Father Phone",
+  "messageMotherPhone": "Mother Phone",
+  "messageDetailedAddress": "Detailed Address",
+  "messageArea": "Area",
+  "messageSchool": "School",
+  "messageSecondaryType": "Secondary Type",
+  "messageHomeLocationMapsLink": "Home Location (Maps Link)",
+  "messageBrethrenOfLordYesNo": "Brethren of Lord (Yes/No)",
+  "messageStudentPhotoUrl": "Student Photo URL",
+  "messageNotes": "Notes",
+  "messageAssignedServant": "Assigned Servant",
+  "messageVisitsCount": "Visits Count",
+  "messageLastVisitDate": "Last Visit Date",
+  "messageYes": "Yes",
+  "messageNo": "No",
+  "messageUnassigned": "Unassigned",
+  "messageNotVisited": "Not Visited",
+  "messageYears": "years",
+  "messageStudentsData": "Students_Data",
+  "messageStudentsTemplate": "Students_Template",
+  "messageMainMenu": "Main Menu",
+  "messageMakhdomeen": "Makhdomeen",
+  "messageMyStudents": "My Students",
+  "messageMyTasks": "My Tasks",
+  "messageAccountDeletionInProgress": "Account deletion in progress",
+  "messageUnableToLoadProfile": "Unable to load profile",
+  "messageYourDeletionRequestIsSavedYouCan": "Your deletion request is saved. You can exit and check its status later.",
+  "messageRetry": "Retry",
+  "messageStudentsImportTemplateXlsx": "Students_Import_Template.xlsx",
+  "messageExcelTemplateForImportingStudentsInEfteqad": "Excel template for importing students in Efteqad",
+  "messageStudentsReportEfteqad": "Students Report - Efteqad",
+  "messageFailedToLoadAttendanceSessions": "Failed to load attendance sessions",
+  "messageLast90Days": "Last 90 days",
+  "messageEn": "en",
+  "messageSession": "Session",
+  "messageAbsenceAlert": "⚠️ Absence Alert: {value0}",
+  "@messageAbsenceAlert": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageStudentMissedFridaysPleaseVisitSoon": "Student missed {value0} Fridays. Please visit soon.",
+  "@messageStudentMissedFridaysPleaseVisitSoon": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageUrgentAlertSentTo": "Urgent alert sent to ({value0})! 🔔",
+  "@messageUrgentAlertSentTo": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageNotify": "Notify",
+  "messageS": "S",
+  "messageUpdateRecordAndPersonalDetails": "Update record and personal details",
+  "messageInsertNewMakhdomToCareRegistry": "Insert new makhdom to care registry",
+  "messageFieldsAreLockedUntilConfirmationRetryTo": "Fields are locked until confirmation. Retry to finish this request.",
+  "messageErrorSavingAssignments": "Error saving assignments: {value0}",
+  "@messageErrorSavingAssignments": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageAssignMakhdomeenToServant": "Assign Makhdomeen to Servant",
+  "messageSelectionIsLockedUntilConfirmationRetryTo": "Selection is locked until confirmation. Retry to finish this request.",
+  "messageGeneratingSharingTemplate": "Generating & sharing template...",
+  "messageError": "Error: {value0}",
+  "@messageError": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageReadingAndExtractingDataFromFile": "Reading and extracting data from file...",
+  "messageCouldNotImportAnyRowsDueTo": "Could not import any rows due to errors:\n{value0}",
+  "@messageCouldNotImportAnyRowsDueTo": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageTargetGrade": "Target Grade: {value0}",
+  "@messageTargetGrade": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageRowsExcluded": "⚠️ {value0} rows excluded:\n{value1}",
+  "@messageRowsExcluded": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      },
+      "value1": {
+        "type": "String"
+      }
+    }
+  },
+  "messageSavingToFirebase": "Saving to Firebase...",
+  "messageSavingToFirebase564": "Saving to Firebase ({value0} / {value1})...",
+  "@messageSavingToFirebase564": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      },
+      "value1": {
+        "type": "String"
+      }
+    }
+  },
+  "messageLocalRowsExcluded": "local rows excluded",
+  "messageServerRowsRejected": "server rows rejected",
+  "messageImportFailed": "Import failed: {value0}",
+  "@messageImportFailed": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageExportingDataToExcel": "Exporting data to Excel...",
+  "messageExportError": "Export error: {value0}",
+  "@messageExportError": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageBulkDataManagementAndSheetExports": "Bulk data management and sheet exports",
+  "messageProcessing": "Processing...",
+  "messageUnassignStudent": "Unassign Student",
+  "messageAreYouSureYouWantToUnassign": "Are you sure you want to unassign {value0}?",
+  "@messageAreYouSureYouWantToUnassign": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageUnassign": "Unassign",
+  "messageM": "M",
+  "messageServant580": "Servant",
+  "messageSelectAServantToAppointAsGrade": "Select a servant to appoint as grade administrator",
+  "messageNoServantsAssignedToYet": "No servants assigned to {value0} yet",
+  "@messageNoServantsAssignedToYet": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageAppointHead": "Appoint Head",
+  "messageAssign": "Assign",
+  "messageChangeHead": "Change Head",
+  "messageUnspecified": "Unspecified",
+  "messageThisSessionHasBeenFinalizedAndCannot": "This session has been finalized and cannot be modified.",
+  "messageErrorSavingAttendance": "Error saving attendance: {value0}",
+  "@messageErrorSavingAttendance": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messagePleaseWaitForPendingSavesToFinish": "Please wait for pending saves to finish.",
+  "messageFinalizeAttendance": "Finalize Attendance",
+  "messageAreYouSureYouWantToFinalize": "Are you sure you want to finalize this attendance session? It cannot be modified afterwards.",
+  "messageCancel": "Cancel",
+  "messageConfirmFinalization": "Confirm Finalization",
+  "messageAttendanceFinalizedSuccessfully": "Attendance finalized successfully.",
+  "messageErrorFinalizingAttendance": "Error finalizing attendance: {value0}",
+  "@messageErrorFinalizingAttendance": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageLoading": "Loading...",
+  "messageFinalized": "Finalized",
+  "messageSaving": "Saving...",
+  "messageSaveError": "Save Error",
+  "messageCouldNotLoadRoster": "Could not load roster: {value0}",
+  "@messageCouldNotLoadRoster": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageAttendanceSessionIsFinalizedAndLockedRead": "Attendance session is finalized and locked. Read-only.",
+  "messageSearchByName": "Search by name",
+  "messageNotificationsCenter": "Notifications Center",
+  "messageMarkAllRead": "Mark all read",
+  "messageAccessDenied": "Access Denied",
+  "messageYouDoNotHavePermissionToAccess": "You do not have permission to access this page.",
+  "messagePageNotFound": "Page Not Found",
+  "messageThePageYouAreLookingForDoes": "The page you are looking for does not exist or has been moved.",
+  "messageAnErrorOccurred": "An Error Occurred",
+  "messageGoHome": "Go Home",
+  "messageNotifications": "Notifications",
+  "messageNotificationsCenter616": "Notifications Center",
+  "messageJustNow": "Just now",
+  "messageMAgo": "{value0}m ago",
+  "@messageMAgo": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageHAgo": "{value0}h ago",
+  "@messageHAgo": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageDAgo": "{value0}d ago",
+  "@messageDAgo": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageNoNotificationsYet": "No notifications yet",
+  "messageTaskAssignmentsAndAlertsWillAppearHere": "Task assignments and alerts will appear here",
+  "messageCouldNotConfirmSaveRetryTheSame": "Could not confirm save. Retry the same locked submission: {value0}",
+  "@messageCouldNotConfirmSaveRetryTheSame": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageCouldNotLoadLocalDraft": "Could not load local draft: {value0}",
+  "@messageCouldNotLoadLocalDraft": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageLocalSubmissionLoadedConfirmationIsPending": "Local submission loaded; confirmation is pending",
+  "messageFieldsAreLockedUntilConfirmationRetryTo631": "Fields are locked until confirmation. Retry to confirm this visit.",
+  "messageAlertBoysNeedUrgentVisitRepeatedAbsence": "Alert: {value0} boys need urgent visit (repeated absence)",
+  "@messageAlertBoysNeedUrgentVisitRepeatedAbsence": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageView": "View 👈",
+  "messageAllSessions": "All sessions",
+  "messageAllConsistent": "All consistent 🎉",
+  "messageAbsenceAlert637": "Absence alert ⚠️",
+  "messageAttendance75": "Attendance ≥ 75%",
+  "messageVisited": "Visited",
+  "messageUnvisited": "Unvisited",
+  "messageAttendanceRatesCurrentlyEqual": "Attendance rates currently equal",
+  "messageCall": "Call",
+  "messageWhatsapp": "WhatsApp",
+  "messageVisit644": "Visit",
+  "messageBehavioralSegmentation": "Behavioral Segmentation",
+  "messageNoStudentsInThisSegment": "No students in this segment",
+  "messageVisits": "Visits: {value0}",
+  "@messageVisits": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageAbsenceAlert649": "Absence alert ⚠️",
+  "messageVisit650": "Visit",
+  "messageBehavioralSegmentation651": "Behavioral Segmentation",
+  "messageOfVisited": "{value0} of {value1} visited",
+  "@messageOfVisited": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      },
+      "value1": {
+        "type": "String"
+      }
+    }
+  },
+  "messageConfirmPassword": "Confirm Password",
+  "messageToDeleteYourAccountPleaseEnterYour": "To delete your account, please enter your password to confirm.",
+  "messagePassword": "Password",
+  "messageProceed": "Proceed",
+  "messageStageAdministratorCannotDeleteAccountBeforeAppointing": "Stage administrator cannot delete account before appointing a confirmed successor.",
+  "messageTaskDetails": "Task Details",
+  "messageDescription": "Description",
+  "messageAssignedServant661": "Assigned Servant",
+  "messageGrade": "Grade",
+  "messageDueDate": "Due Date",
+  "messageCreatedBy": "Created By",
+  "messageOpenAttendanceSheet": "Open Attendance Sheet",
+  "messageCompleted": "Completed",
+  "messageMarkAsCompleted": "Mark as Completed",
+  "messageAdmin": "Admin",
+  "messageYouAreAssignedToTakeServiceAttendance": "You are assigned to take Service attendance",
+  "messageYouAreAssignedToTakeMassAttendance": "You are assigned to take Mass attendance",
+  "messageAssignedYouANewTask": "{value0} assigned you a new task",
+  "@messageAssignedYouANewTask": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageNewTask": "New Task: {value0} 📋",
+  "@messageNewTask": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageSubmissionIsLockedUntilConfirmationRetryTo": "Submission is locked until confirmation. Retry to confirm this task.",
+  "messageYouAreOffline": "You are offline",
+  "messageSyncingPendingChanges": "Syncing pending changes...",
+  "messageNoServantsAssignedToYetAssignServants": "No servants assigned to {value0} yet.\nAssign servants before appointing a head.",
+  "@messageNoServantsAssignedToYetAssignServants": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageCurrentHead": "Current head",
+  "messageAssignedSecondaryStageServants": "Assigned secondary stage servants",
+  "messageServants": "{value0} servants",
+  "@messageServants": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageNoServantsAssignedToThisSectionYet": "No servants assigned to this section yet",
+  "messageGradeHead": "Grade head",
+  "messageAssignedStudents": "{value0} • {value1} assigned students",
+  "@messageAssignedStudents": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      },
+      "value1": {
+        "type": "String"
+      }
+    }
+  },
+  "messageChangeGrade": "Change grade",
+  "messageNewServant": "New servant",
+  "messageNoAttendanceSessionsRecordedYet": "No attendance sessions recorded yet",
+  "messageWeeklyStatisticsAppearHereAfterRecordingAttendance": "Weekly statistics appear here after recording attendance",
+  "messageOverallAttendanceRate": "Overall attendance rate",
+  "messageAverageOfRecordedSessions": "Average of recorded sessions",
+  "messageAttendanceFridays": "Attendance Fridays",
+  "messageServiceMass": "{value0} service • {value1} Mass",
+  "@messageServiceMass": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      },
+      "value1": {
+        "type": "String"
+      }
+    }
+  },
+  "messageAverageSundaySchoolAttendance": "Average Sunday school attendance",
+  "messageAverageMassAttendance": "Average Mass attendance",
+  "messageWeeklyAttendanceRecentFridays": "Weekly attendance (recent Fridays)",
+  "messageMass": "Mass",
+  "messageService": "Service",
+  "messageStudents": "{value0} students",
+  "@messageStudents": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageVisitedStudents": "Visited students",
+  "messageStudents705": "{value0} students",
+  "@messageStudents705": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageUnvisitedStudents": "Unvisited students",
+  "messageStudents708": "{value0} students",
+  "@messageStudents708": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageStudentAttendanceGroups": "Student attendance groups",
+  "messageNoStudentsInThisGroup": "No students in this group",
+  "messageAgeYears": "Age: {value0} years",
+  "@messageAgeYears": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageCalculatedPrecisely": "Calculated precisely ⚡",
+  "messageAutomatic": "Automatic ⚡",
+  "messageBirthDate": "Birth date: {value0}/{value1}/{value2}",
+  "@messageBirthDate": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      },
+      "value1": {
+        "type": "String"
+      },
+      "value2": {
+        "type": "String"
+      }
+    }
+  },
+  "messageAgeEstimatedFromSecondaryGrade": "Age estimated from secondary grade ({value0})",
+  "@messageAgeEstimatedFromSecondaryGrade": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageResetToAutomaticCalculation": "Reset to automatic calculation",
+  "messageYears721": "{value0} years",
+  "@messageYears721": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageChooseExactBirthDate": "Choose exact birth date",
+  "messageExactDate": "Exact date...",
+  "messageServantUnavailableInThisList": "Servant unavailable in this list",
+  "messageStudents726": "Students_{value0}",
+  "@messageStudents726": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageAgeEstimatedFrom": "Age: {value0} (estimated from {value1})",
+  "@messageAgeEstimatedFrom": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      },
+      "value1": {
+        "type": "String"
+      }
+    }
+  },
+  "messageAssignedStudents730": "{value0} • {value1} assigned students",
+  "@messageAssignedStudents730": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      },
+      "value1": {
+        "type": "String"
+      }
+    }
+  },
+  "messageChangeGrade732": "Change grade",
+  "messageVisitNotesAndDiscussion": "Visit notes and discussion",
+  "messageRecordVisitDiscussionMeetingDetailsOrPastoral": "Record visit discussion, meeting details, or pastoral needs...",
+  "messageOfStudents": "{value0} of {value1} students",
+  "@messageOfStudents": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      },
+      "value1": {
+        "type": "String"
+      }
+    }
+  },
+  "messageAttendance": "{value0}% attendance",
+  "@messageAttendance": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageStageServant": "Stage servant",
+  "messageDate": "Date: {value0}",
+  "@messageDate": {
+    "placeholders": {
+      "value0": {
+        "type": "String"
+      }
+    }
+  },
+  "messageSelectDueDateOptional": "Select due date (optional)",
+  "messageFriday": "Friday",
+  "failurePermissionDenied": "You do not have permission to perform this action.",
+  "failureNetwork": "Could not connect. Check your internet connection and try again.",
+  "failureNotFound": "The requested item is unavailable or has been removed.",
+  "failureDecode": "Could not read the data. Try loading it again.",
+  "failureAuthentication": "Sign in again to verify your identity.",
+  "stageSuccessorRequired": "An active, verified replacement stage administrator is required before deleting your account.",
+  "channelName": "Visits and task notifications",
+  "channelDescription": "Task, assignment, attendance and absence alerts",
+  "newNotification": "New notification 🔔",
+  "secondaryGeneral": "General secondary",
+  "secondaryTechnical": "Technical / vocational",
+  "secondaryService": "Services",
+  "secondaryCommercial": "Commercial",
+  "secondaryOther": "Other",
+  "excelSampleSkipped": "Sample row ({name}) was skipped.",
+  "@excelSampleSkipped": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "excelMissingName": "Student name is empty in row {row}",
+  "@excelMissingName": {
+    "placeholders": {
+      "row": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "excelMissingPhone": "Student phone is empty in row {row}",
+  "@excelMissingPhone": {
+    "placeholders": {
+      "row": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "excelDuplicatePhone": "Duplicate phone ({phone}) for student ({name})",
+  "@excelDuplicatePhone": {
+    "placeholders": {
+      "phone": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "excelInvalidBirthDate": "Invalid birth date: {value}",
+  "@excelInvalidBirthDate": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "excelInvalidTrackingDate": "Invalid tracking start date: {value}",
+  "@excelInvalidTrackingDate": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "excelEmptyFailure": "The workbook is empty or invalid.",
+  "excelColumnsFailure": "Could not find name or phone columns in the header.",
+  "excelReadFailure": "Could not read the workbook.",
+  "attendanceFinalizedFailure": "This attendance session has been finalized.",
+  "pendingSavesFailure": "Wait for pending saves to finish.",
+  "birthDateCaption": "Birth date: {date}",
+  "@birthDateCaption": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "analyticsDateBounds": "{from} – {to}",
+  "trackingStartLabel": "Tracking starts: {date}",
+  "trackingStartEstimatedLabel": "Estimated tracking start: {date}",
+  "trackingOriginUnknown": "Tracking start unknown; attendance data is insufficient.",
+  "loadMore": "Load more",
+  "secondaryTypeCustomLabel": "Custom secondary type",
+  "legacyNotesLabel": "Legacy notes",
+  "@trackingStartLabel": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "@trackingStartEstimatedLabel": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "@analyticsDateBounds": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      }
+    }
+  },
+  "cachedDataHint": "Showing cached data; awaiting server confirmation.",
+  "insufficientDataShort": "Insufficient",
+  "followupNotificationTitle": "Follow-up alert",
+  "followupNotificationBody": "Open Efteqad to follow up with an assigned student."
+}

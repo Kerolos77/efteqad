@@ -1,0 +1,130 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+    function profile() {
+      return get(/databases/$(database)/documents/khodam/$(request.auth.uid)).data;
+    }
+    function active() {
+      return signedIn() && profile().status == 'active'
+        && profile().role in ['stageAdmin', 'gradeAdmin', 'servant'];
+    }
+    function stage() {
+      return active() && profile().role == 'stageAdmin';
+    }
+    function gradeAdmin(grade) {
+      return active() && profile().role == 'gradeAdmin' && profile().grade == grade;
+    }
+    function scope(grade) {
+      return stage() || gradeAdmin(grade);
+    }
+    function assignedChild(data) {
+      return active() && profile().role == 'servant'
+        && data.get('assignedKhademId', null) == request.auth.uid;
+    }
+    function childAccess(id) {
+      let child = get(/databases/$(database)/documents/makhdomeen/$(id)).data;
+      return scope(child.grade) || assignedChild(child);
+    }
+    function assignedTask(data) {
+      return active() && (
+        data.get('assignedKhademId', null) == request.auth.uid
+        || data.get('assignedToId', null) == request.auth.uid
+      );
+    }
+    function ownGradeServant(grade) {
+      return profile().role == 'servant' && profile().grade == grade;
+    }
+    function attendancePartRead(grade, data) {
+      return active() && (
+        scope(grade) || ownGradeServant(grade)
+        || (data.get('taskId', null) != null
+          && assignedTask(get(/databases/$(database)/documents/tasks/$(data.taskId)).data))
+      );
+    }
+    function visitRead(data) {
+      return active() && (
+        scope(data.get('grade', null))
+        || data.get('khademId', data.get('servantId', null)) == request.auth.uid
+        || childAccess(data.makhdomId)
+      );
+    }
+
+    match /khodam/{khademId} {
+      allow read: if signedIn() && (
+        request.auth.uid == khademId || stage()
+        || gradeAdmin(resource.data.get('grade', null))
+      );
+      allow create: if signedIn() && request.auth.uid == khademId
+        && request.resource.data.role == 'pending'
+        && request.resource.data.status == 'pending'
+        && request.resource.data.get('grade', null) == null
+        && request.resource.data.keys().hasOnly([
+          'name', 'phone', 'email', 'role', 'grade', 'status', 'createdAt', 'locale'
+        ]);
+      allow update: if signedIn() && request.auth.uid == khademId
+        && resource.data.status in ['active', 'pending']
+        && request.resource.data.diff(resource.data).affectedKeys()
+          .hasOnly(['name', 'phone', 'locale']);
+      allow delete: if false;
+
+      match /devices/{installationId} {
+        allow read, delete: if signedIn() && request.auth.uid == khademId;
+        allow create, update: if signedIn() && request.auth.uid == khademId
+          && profile().status in ['active', 'pending']
+          && request.resource.data.keys().hasOnly(['token', 'locale', 'platform', 'updatedAt'])
+          && request.resource.data.token is string
+          && request.resource.data.locale is string
+          && request.resource.data.platform is string;
+      }
+    }
+    match /makhdomeen/{id} {
+      allow read: if scope(resource.data.grade) || assignedChild(resource.data);
+      allow write: if false;
+    }
+    match /attendance/{sessionId} {
+      allow read: if scope(resource.data.grade);
+      allow write: if false;
+
+      match /grades/{grade} {
+        allow read: if attendancePartRead(grade, resource.data);
+        allow write: if false;
+      }
+    }
+    match /{path=**}/grades/{grade} {
+      allow read: if active() && (
+        scope(resource.data.grade) || ownGradeServant(resource.data.grade)
+      );
+    }
+    match /attendance_roster/{id} {
+      allow read: if scope(resource.data.grade);
+      allow write: if false;
+    }
+    match /visits/{id} {
+      allow read: if visitRead(resource.data);
+      allow write: if false;
+    }
+    match /tasks/{id} {
+      allow read: if scope(resource.data.get('grade', null)) || assignedTask(resource.data);
+      allow create, delete: if false;
+      allow update: if active() && resource.data.type in ['general', 'visitation']
+        && (scope(resource.data.grade) || assignedTask(resource.data))
+        && request.resource.data.diff(resource.data).affectedKeys()
+          .hasOnly(['isCompleted', 'completedAt'])
+        && request.resource.data.isCompleted is bool;
+    }
+    match /notifications/{id} {
+      allow read: if active() && (resource.data.recipientId == request.auth.uid || stage());
+      allow create: if false;
+      allow update: if active() && resource.data.recipientId == request.auth.uid
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['isRead'])
+        && request.resource.data.isRead is bool;
+      allow delete: if active() && resource.data.recipientId == request.auth.uid;
+    }
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

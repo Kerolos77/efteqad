@@ -1,0 +1,1597 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تطبيق الراعي | منظومة خدمة وافتقاد مرحلة ثانوي</title>
+  <meta name="description" content="تطبيق الراعي (Efteqad) — منظومة رقمية متكاملة لخدمة وافتقاد مخدومي مرحلة ثانوي، متابعة الحضور والقداسات، إدارة المهام، والتقارير الإحصائية." />
+  <meta name="theme-color" content="#070E17" />
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="تطبيق الراعي — أَنَا هُوَ الرَّاعِي الصَّالِحُ" />
+  <meta property="og:description" content="حمّل تطبيق الراعي للأندرويد (APK) لمتابعة الافتقاد، حضور الخدمة والقداسات، وإدارة مهام الخدام لمرحلة ثانوي." />
+  <meta property="og:image" content="assets/logo.png" />
+
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+
+  <!-- Google Fonts: Cairo & Amiri -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,700;1,700&family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      /* ألوان هوية «الراعي» من التطبيق (AppConstants) */
+      --sacred-gold: #E2B542;
+      --royal-gold: #C9A84C;
+      --gold-glow: rgba(226, 181, 66, 0.25);
+      --primary-navy: #132238;
+      --primary-blue: #1E3A8A;
+      --accent-indigo: #4F46E5;
+      --emerald: #10B981;
+      --amber: #F59E0B;
+      --rose: #EF4444;
+      --sky: #0284C7;
+
+      /* Dark Mode (Default - الهوية الليلية الملكية) */
+      --bg-main: #070E17;
+      --bg-elevated: #0D1B2A;
+      --bg-card: rgba(13, 27, 42, 0.78);
+      --bg-card-solid: #0D1B2A;
+      --bg-glass: rgba(7, 14, 23, 0.82);
+      --border-color: #1E334D;
+      --border-gold: rgba(226, 181, 66, 0.35);
+      --text-primary: #F8FAFC;
+      --text-secondary: #94A3B8;
+      --text-muted: #64748B;
+      --shadow-card: 0 20px 50px rgba(0, 0, 0, 0.45);
+    }
+
+    [data-theme="light"] {
+      --bg-main: #F8FAFC;
+      --bg-elevated: #EEF2F6;
+      --bg-card: rgba(255, 255, 255, 0.92);
+      --bg-card-solid: #FFFFFF;
+      --bg-glass: rgba(248, 250, 252, 0.88);
+      --border-color: #E2E8F0;
+      --border-gold: rgba(201, 168, 76, 0.45);
+      --text-primary: #0D1B2A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      --shadow-card: 0 16px 40px rgba(13, 27, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      line-height: 1.7;
+      overflow-x: hidden;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      position: relative;
+    }
+
+    /* خلفية نورانية ذهبية خفيفة */
+    .ambient-glow {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(226, 181, 66, 0.11) 0%, transparent 40%),
+        radial-gradient(circle at 85% 25%, rgba(30, 58, 138, 0.18) 0%, transparent 45%),
+        radial-gradient(circle at 50% 85%, rgba(226, 181, 66, 0.07) 0%, transparent 50%);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ==================== شريط التنقل العلوي ==================== */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: var(--bg-glass);
+      border-bottom: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+    }
+
+    .navbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+
+    .brand-logo {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      object-fit: cover;
+      border: 1.5px solid var(--sacred-gold);
+      box-shadow: 0 0 18px var(--gold-glow);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-size: 1.35rem;
+      font-weight: 900;
+      line-height: 1.2;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .version-pill {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(226, 181, 66, 0.15);
+      color: var(--sacred-gold);
+      border: 1px solid var(--border-gold);
+    }
+
+    .brand-subtitle {
+      font-size: 0.76rem;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--sacred-gold);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .icon-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-card);
+      color: var(--text-primary);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .icon-btn:hover {
+      border-color: var(--sacred-gold);
+      color: var(--sacred-gold);
+      transform: translateY(-1px);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 24px;
+      border-radius: 16px;
+      font-family: inherit;
+      font-weight: 800;
+      font-size: 0.96rem;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.25s ease;
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, var(--sacred-gold) 0%, var(--royal-gold) 100%);
+      color: #070E17;
+      box-shadow: 0 10px 28px rgba(226, 181, 66, 0.28);
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 34px rgba(226, 181, 66, 0.42);
+    }
+
+    .btn-outline {
+      background: var(--bg-card);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--sacred-gold);
+      color: var(--sacred-gold);
+      transform: translateY(-2px);
+    }
+
+    /* ==================== قسم المقدمة (Hero Section) ==================== */
+    .hero {
+      padding: 64px 0 56px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .verse-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 18px;
+      border-radius: 999px;
+      background: rgba(226, 181, 66, 0.12);
+      border: 1px solid var(--border-gold);
+      color: var(--sacred-gold);
+      font-family: 'Amiri', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 22px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 4vw, 3.25rem);
+      font-weight: 900;
+      line-height: 1.25;
+      margin-bottom: 18px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero-title .gold-text {
+      background: linear-gradient(135deg, #FDE68A 0%, var(--sacred-gold) 55%, var(--royal-gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    [data-theme="light"] .hero-title .gold-text {
+      background: linear-gradient(135deg, #B45309 0%, #D97706 60%, var(--royal-gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 30px;
+      max-width: 600px;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .btn-hero-download {
+      padding: 16px 32px;
+      font-size: 1.08rem;
+      border-radius: 18px;
+    }
+
+    .meta-strip {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 20px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border-color);
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-weight: 600;
+    }
+
+    .meta-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--emerald);
+      box-shadow: 0 0 10px var(--emerald);
+    }
+
+    /* ==================== معاينة الهاتف التفاعلية ==================== */
+    .phone-showcase {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .phone-frame {
+      width: 100%;
+      max-width: 370px;
+      background: #070E17;
+      border-radius: 40px;
+      padding: 14px;
+      border: 3px solid #263E5F;
+      box-shadow:
+        0 30px 70px rgba(0, 0, 0, 0.55),
+        0 0 40px rgba(226, 181, 66, 0.14);
+      position: relative;
+    }
+
+    .phone-notch {
+      width: 110px;
+      height: 22px;
+      background: #03070C;
+      border-radius: 0 0 14px 14px;
+      margin: 0 auto 10px;
+    }
+
+    .phone-screen {
+      background: #0D1B2A;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid #1E334D;
+      color: #F8FAFC;
+      min-height: 510px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .app-topbar {
+      padding: 14px 16px 12px;
+      background: linear-gradient(180deg, #132238 0%, #0D1B2A 100%);
+      border-bottom: 1px solid #1E334D;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .app-topbar-title {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-weight: 800;
+      font-size: 0.92rem;
+    }
+
+    .app-topbar-title img {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      border: 1px solid var(--sacred-gold);
+    }
+
+    .app-role-badge {
+      font-size: 0.7rem;
+      padding: 3px 9px;
+      border-radius: 99px;
+      background: rgba(226, 181, 66, 0.16);
+      color: var(--sacred-gold);
+      font-weight: 700;
+    }
+
+    .screen-switcher {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      padding: 10px 12px;
+      background: #09131F;
+    }
+
+    .screen-tab-btn {
+      padding: 7px 6px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      background: transparent;
+      color: #94A3B8;
+      font-family: inherit;
+      font-size: 0.74rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .screen-tab-btn.active {
+      background: rgba(30, 58, 138, 0.45);
+      color: var(--sacred-gold);
+      border-color: rgba(226, 181, 66, 0.35);
+    }
+
+    .phone-body {
+      padding: 14px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+
+    .mock-panel {
+      display: none;
+      flex-direction: column;
+      gap: 11px;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .mock-panel.active {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .mock-greeting {
+      background: linear-gradient(135deg, #1E3A8A 0%, #132238 100%);
+      padding: 12px 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(226, 181, 66, 0.3);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .mock-greeting h4 {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: #FFF;
+    }
+
+    .mock-greeting p {
+      font-size: 0.72rem;
+      color: #CBD5E1;
+    }
+
+    .mock-progress-ring {
+      background: rgba(226, 181, 66, 0.2);
+      color: var(--sacred-gold);
+      font-weight: 900;
+      font-size: 0.78rem;
+      padding: 6px 10px;
+      border-radius: 12px;
+      border: 1px solid var(--sacred-gold);
+    }
+
+    .mock-card {
+      background: #132238;
+      border: 1px solid #1E334D;
+      border-radius: 16px;
+      padding: 11px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .mock-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .mock-person {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .mock-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 11px;
+      background: rgba(226, 181, 66, 0.18);
+      color: var(--sacred-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.82rem;
+    }
+
+    .mock-person-name {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: #F8FAFC;
+    }
+
+    .mock-person-sub {
+      font-size: 0.69rem;
+      color: #94A3B8;
+    }
+
+    .status-tag {
+      font-size: 0.66rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 8px;
+    }
+
+    .status-emerald {
+      background: rgba(16, 185, 129, 0.16);
+      color: #34D399;
+    }
+
+    .status-amber {
+      background: rgba(245, 158, 11, 0.16);
+      color: #FBBF24;
+    }
+
+    .status-rose {
+      background: rgba(239, 68, 68, 0.16);
+      color: #F87171;
+    }
+
+    .mock-actions {
+      display: flex;
+      gap: 6px;
+      padding-top: 6px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .mock-mini-btn {
+      flex: 1;
+      text-align: center;
+      padding: 5px 6px;
+      border-radius: 8px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.05);
+      color: #E2E8F0;
+    }
+
+    .mock-mini-btn.gold {
+      background: rgba(226, 181, 66, 0.18);
+      color: var(--sacred-gold);
+    }
+
+    .mock-kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+
+    .mock-kpi-box {
+      background: #132238;
+      border: 1px solid #1E334D;
+      border-radius: 14px;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .mock-kpi-num {
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: var(--sacred-gold);
+    }
+
+    .mock-kpi-label {
+      font-size: 0.68rem;
+      color: #94A3B8;
+    }
+
+    /* ==================== شريط الإحصائيات ==================== */
+    .stats-bar {
+      padding: 24px 0 48px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 22px;
+      padding: 24px 20px;
+      text-align: center;
+      box-shadow: var(--shadow-card);
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-gold);
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--sacred-gold);
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+
+    .stat-title {
+      font-size: 0.98rem;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .stat-sub {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    /* ==================== الأقسام العامة ==================== */
+    .section {
+      padding: 72px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 48px;
+    }
+
+    .section-eyebrow {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--sacred-gold);
+      background: rgba(226, 181, 66, 0.12);
+      border: 1px solid var(--border-gold);
+      padding: 5px 16px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: clamp(1.75rem, 3vw, 2.4rem);
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+
+    .section-subtitle {
+      color: var(--text-secondary);
+      font-size: 1.02rem;
+    }
+
+    /* ==================== شبكة المميزات ==================== */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 28px 24px;
+      box-shadow: var(--shadow-card);
+      transition: all 0.28s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--sacred-gold);
+    }
+
+    .feature-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      font-size: 1.5rem;
+      background: rgba(226, 181, 66, 0.14);
+      color: var(--sacred-gold);
+      border: 1px solid var(--border-gold);
+    }
+
+    .feature-card h3 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .feature-card p {
+      color: var(--text-secondary);
+      font-size: 0.94rem;
+      line-height: 1.75;
+    }
+
+    /* ==================== قسم الأدوار والهيكل التنظيمي ==================== */
+    .roles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .role-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 30px 24px;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .role-card.featured {
+      border-color: var(--sacred-gold);
+      background: linear-gradient(180deg, rgba(226, 181, 66, 0.09) 0%, var(--bg-card-solid) 100%);
+    }
+
+    .role-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .role-badge-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: rgba(30, 58, 138, 0.35);
+      border: 1px solid var(--border-gold);
+      color: var(--sacred-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 1.2rem;
+    }
+
+    .role-title {
+      font-size: 1.22rem;
+      font-weight: 900;
+    }
+
+    .role-en {
+      font-size: 0.78rem;
+      color: var(--sacred-gold);
+      font-weight: 700;
+    }
+
+    .role-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .role-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+    }
+
+    .role-list li::before {
+      content: "✦";
+      color: var(--sacred-gold);
+      font-size: 0.9rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* ==================== خطوات التثبيت ==================== */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .step-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 28px 24px;
+      position: relative;
+      box-shadow: var(--shadow-card);
+    }
+
+    .step-num {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--sacred-gold), var(--royal-gold));
+      color: #070E17;
+      font-weight: 900;
+      font-size: 1.15rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .step-card h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .step-card p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+    }
+
+    /* ==================== بطاقة التحميل النهائية و QR ==================== */
+    .download-box {
+      background: linear-gradient(135deg, #0D1B2A 0%, #132238 60%, #1E3A8A 100%);
+      border: 1.5px solid var(--border-gold);
+      border-radius: 32px;
+      padding: 48px;
+      color: #F8FAFC;
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.5);
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .download-info h2 {
+      font-size: clamp(1.7rem, 3vw, 2.3rem);
+      font-weight: 900;
+      margin-bottom: 14px;
+    }
+
+    .download-info p {
+      color: #CBD5E1;
+      font-size: 1.02rem;
+      margin-bottom: 24px;
+    }
+
+    .release-specs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .spec-chip {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      padding: 6px 14px;
+      border-radius: 12px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: #F8FAFC;
+    }
+
+    .qr-card {
+      background: rgba(7, 14, 23, 0.75);
+      border: 1px solid var(--border-gold);
+      border-radius: 24px;
+      padding: 24px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .qr-img-wrapper {
+      background: #FFFFFF;
+      padding: 12px;
+      border-radius: 16px;
+      display: inline-flex;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .qr-img-wrapper img {
+      width: 150px;
+      height: 150px;
+      display: block;
+    }
+
+    .qr-caption {
+      font-size: 0.85rem;
+      color: #CBD5E1;
+      font-weight: 700;
+    }
+
+    /* ==================== الفوتر ==================== */
+    .footer {
+      padding: 36px 0;
+      border-top: 1px solid var(--border-color);
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .footer-verse {
+      font-family: 'Amiri', serif;
+      color: var(--sacred-gold);
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+    }
+
+    /* ==================== التجاوب مع الشاشات ==================== */
+    @media (max-width: 992px) {
+      .hero-grid,
+      .download-box {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-desc {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-cta-group,
+      .meta-strip,
+      .release-specs {
+        justify-content: center;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .features-grid,
+      .roles-grid,
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .download-box {
+        padding: 28px 20px;
+      }
+
+      .btn-hero-download {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient-glow"></div>
+
+  <!-- شريط التنقل -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="#" class="brand">
+        <img src="assets/logo.png" alt="شعار تطبيق الراعي" class="brand-logo" />
+        <div class="brand-text">
+          <div class="brand-title">
+            <span>الراعي</span>
+            <span class="version-pill" id="nav-version">v1.0.0</span>
+          </div>
+          <span class="brand-subtitle">خدمة وافتقاد مرحلة ثانوي</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#features">مميزات التطبيق</a></li>
+        <li><a href="#roles">منظومة الخدمة</a></li>
+        <li><a href="#install">طريقة التثبيت</a></li>
+        <li><a href="#download">تحميل APK</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="icon-btn" id="theme-toggle" title="تبديل الوضع الليلي / النهاري" aria-label="تبديل المظهر">
+          <span id="theme-icon">☀️</span>
+        </button>
+        <a href="#download" class="btn btn-gold">
+          <span>تحميل التطبيق</span>
+          <span>⬇</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- القسم الرئيسي (Hero) -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="verse-badge">
+          <span>✝</span>
+          <span>«أَنَا هُوَ الرَّاعِي الصَّالِحُ»</span>
+        </div>
+
+        <h1 class="hero-title">
+          رعاية وافتقاد كل نفس بمحبة وأمانة عبر تطبيق
+          <span class="gold-text">«الراعي»</span>
+        </h1>
+
+        <p class="hero-desc">
+          منظومة رقمية متكاملة لخدمة مرحلة ثانوي (أولى • ثانية • ثالثة ثانوي)، تساعد أمناء الخدمة والخدام على متابعة الافتقاد، حضور الاجتماع والقداسات، إسناد المهام، وإصدار التقارير الإحصائية لحظياً.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="efteqad-release.apk" id="primary-download-btn" class="btn btn-gold btn-hero-download" download>
+            <span>📲</span>
+            <span id="download-btn-label">تحميل للأندرويد (APK)</span>
+          </a>
+          <a href="#install" class="btn btn-outline btn-hero-download">
+            <span>📖</span>
+            <span>خطوات التثبيت السريع</span>
+          </a>
+        </div>
+
+        <div class="meta-strip">
+          <div class="meta-item">
+            <span class="meta-dot"></span>
+            <span id="release-status-text">الإصدار المعتمد v1.0.0 جاهز للتحميل</span>
+          </div>
+          <div class="meta-item">
+            <span>🛡️</span>
+            <span>دخول آمن بحساب Google</span>
+          </div>
+          <div class="meta-item">
+            <span>☁️</span>
+            <span>مزامنة فورية عبر Firebase</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- معاينة حية لشاشات التطبيق -->
+      <div class="phone-showcase">
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="app-topbar">
+              <div class="app-topbar-title">
+                <img src="assets/logo.png" alt="الراعي" />
+                <span>الراعي</span>
+              </div>
+              <span class="app-role-badge" id="preview-role-badge">واجهة الخادم</span>
+            </div>
+
+            <div class="screen-switcher">
+              <button class="screen-tab-btn active" onclick="switchPreview('servant', this)">شاشة الخادم</button>
+              <button class="screen-tab-btn" onclick="switchPreview('admin', this)">لوحة الأمين</button>
+              <button class="screen-tab-btn" onclick="switchPreview('attendance', this)">الحضور والقداس</button>
+            </div>
+
+            <div class="phone-body">
+              <!-- التبويب 1: شاشة الخادم -->
+              <div class="mock-panel active" id="panel-servant">
+                <div class="mock-greeting">
+                  <div>
+                    <h4>سلام ونعمة يا أ/ مينا</h4>
+                    <p>تم افتقاد 8 من 10 مخدومين هذا الشهر</p>
+                  </div>
+                  <div class="mock-progress-ring">80%</div>
+                </div>
+
+                <div class="mock-card">
+                  <div class="mock-card-header">
+                    <div class="mock-person">
+                      <div class="mock-avatar">ك</div>
+                      <div>
+                        <div class="mock-person-name">كيرلس ماجد صبحي</div>
+                        <div class="mock-person-sub">ثانية ثانوي • سيدي بشر</div>
+                      </div>
+                    </div>
+                    <span class="status-tag status-emerald">منتظم</span>
+                  </div>
+                  <div class="mock-actions">
+                    <span class="mock-mini-btn">📞 اتصال</span>
+                    <span class="mock-mini-btn">💬 واتساب</span>
+                    <span class="mock-mini-btn gold">✍️ تسجيل افتقاد</span>
+                  </div>
+                </div>
+
+                <div class="mock-card">
+                  <div class="mock-card-header">
+                    <div class="mock-person">
+                      <div class="mock-avatar">ب</div>
+                      <div>
+                        <div class="mock-person-name">بيشوي عادل جرجس</div>
+                        <div class="mock-person-sub">ثانية ثانوي • فيكتوريا</div>
+                      </div>
+                    </div>
+                    <span class="status-tag status-rose">يحتاج افتقاد</span>
+                  </div>
+                  <div class="mock-actions">
+                    <span class="mock-mini-btn">📞 اتصال</span>
+                    <span class="mock-mini-btn">📍 العنوان</span>
+                    <span class="mock-mini-btn gold">✍️ تسجيل افتقاد</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- التبويب 2: لوحة الأمين -->
+              <div class="mock-panel" id="panel-admin">
+                <div class="mock-greeting">
+                  <div>
+                    <h4>لوحة تحكم أمين الخدمة</h4>
+                    <p>إحصائيات آخر 90 يوماً • جميع الدفعات</p>
+                  </div>
+                  <div class="mock-progress-ring">3 دفعات</div>
+                </div>
+
+                <div class="mock-kpi-grid">
+                  <div class="mock-kpi-box">
+                    <div class="mock-kpi-num">142</div>
+                    <div class="mock-kpi-label">إجمالي المخدومين</div>
+                  </div>
+                  <div class="mock-kpi-box">
+                    <div class="mock-kpi-num">24</div>
+                    <div class="mock-kpi-label">الخدام المعتمدون</div>
+                  </div>
+                  <div class="mock-kpi-box">
+                    <div class="mock-kpi-num">86%</div>
+                    <div class="mock-kpi-label">نسبة تغطية الافتقاد</div>
+                  </div>
+                  <div class="mock-kpi-box">
+                    <div class="mock-kpi-num">Excel</div>
+                    <div class="mock-kpi-label">استيراد وتصدير فوري</div>
+                  </div>
+                </div>
+
+                <div class="mock-card">
+                  <div class="mock-card-header">
+                    <div class="mock-person">
+                      <div class="mock-avatar">📊</div>
+                      <div>
+                        <div class="mock-person-name">توزيع المخدومين والمهام</div>
+                        <div class="mock-person-sub">تسكين الخدام ومتابعة التكليفات</div>
+                      </div>
+                    </div>
+                    <span class="status-tag status-emerald">نشط</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- التبويب 3: الحضور والقداس -->
+              <div class="mock-panel" id="panel-attendance">
+                <div class="mock-greeting">
+                  <div>
+                    <h4>تسجيل حضور القداس والخدمة</h4>
+                    <p>الجمعة • قداس المرحلة + اجتماع ثانوي</p>
+                  </div>
+                  <div class="mock-progress-ring">مؤمَّن</div>
+                </div>
+
+                <div class="mock-card">
+                  <div class="mock-card-header">
+                    <div class="mock-person">
+                      <div class="mock-avatar">⛪</div>
+                      <div>
+                        <div class="mock-person-name">قداس مرحلة ثانوي العام</div>
+                        <div class="mock-person-sub">أولى + ثانية + ثالثة ثانوي</div>
+                      </div>
+                    </div>
+                    <span class="status-tag status-emerald">معتمد</span>
+                  </div>
+                </div>
+
+                <div class="mock-card">
+                  <div class="mock-card-header">
+                    <div class="mock-person">
+                      <div class="mock-avatar">📖</div>
+                      <div>
+                        <div class="mock-person-name">اجتماع خدمة أولى ثانوي</div>
+                        <div class="mock-person-sub">تحديث لحظي من أجهزة الخدام</div>
+                      </div>
+                    </div>
+                    <span class="status-tag status-amber">قيد التسجيل</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- شريط الإحصائيات السريعة -->
+  <section class="stats-bar">
+    <div class="container stats-grid">
+      <div class="stat-card">
+        <div class="stat-value">3 سنوات</div>
+        <div class="stat-title">أولى • ثانية • ثالثة ثانوي</div>
+        <div class="stat-sub">تقسيم مستقل لكل دفعة مع إشراف عام للمرحلة</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">4 وسائل</div>
+        <div class="stat-title">لتوثيق الافتقاد</div>
+        <div class="stat-sub">زيارة منزلية • مكالمة • واتساب • مقابلة كنسية</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">90 يوماً</div>
+        <div class="stat-title">تحليل ذكي للمواظبة</div>
+        <div class="stat-sub">فرز تلقائي للمنتظمين والمنقطعين لسرعة الرعاية</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">Excel</div>
+        <div class="stat-title">استيراد وتصدير متكامل</div>
+        <div class="stat-sub">دعم كامل لشيتات البيانات والتقارير بالعربية والإنجليزية</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- قسم المميزات -->
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">لماذا تطبيق «الراعي»؟</span>
+        <h2 class="section-title">كل ما تحتاجه الخدمة في تطبيق واحد</h2>
+        <p class="section-subtitle">
+          صُمم التطبيق ليكون رفيقاً عملياً للخادم وأمين الخدمة، يجمع بين البساطة والسرعة والدقة في حفظ بيانات المخدومين.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🏠</div>
+          <h3>تدوين الافتقاد الشامل</h3>
+          <p>
+            سجّل الزيارات المنزلية أو المكالمات الهاتفية أو رسائل الواتساب مع إمكانية إرفاق الموقع الجغرافي (GPS) والملاحظات الرعوية وتاريخ الافتقاد.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">⛪</div>
+          <h3>حضور الخدمة والقداسات</h3>
+          <p>
+            كشوف حضور رقمية لاجتماع الخدمة والقداس الإلهي لكل دفعة على حدة أو للمرحلة كاملة، مع دعم العمل التعاوني بين أكثر من خادم في نفس الجلسة.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">📈</div>
+          <h3>مؤشرات وتحليلات ذكية</h3>
+          <p>
+            تصنيف تلقائي لحالة انتظام كل مخدوم (منتظم، غير منتظم، يحتاج افتقاد عاجل) بناءً على سجل الحضور الفعلي في الخدمة والقداسات.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">✅</div>
+          <h3>إدارة المهام والإشعارات</h3>
+          <p>
+            إسناد مهام افتقاد أو أخذ غياب للخدام مع تحديد موعد الاستحقاق، وإرسال إشعارات فورية (Push Notifications) على الهاتف.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>أدوات Excel المتقدمة</h3>
+          <p>
+            استيراد قوائم المخدومين من ملفات الإكسيل مع فحص التكرارات، وتصدير تقارير شاملة للبيانات والافتقاد والحضور بضغطة زر.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🌙</div>
+          <h3>تصميم ملكي ولغتان</h3>
+          <p>
+            واجهة عصرية تدعم الوضع الليلي الملكي (Dark Mode) والوضع الفاتح، مع دعم كامل للغتين العربية (RTL) والإنجليزية (LTR).
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- قسم الأدوار والصلاحيات -->
+  <section class="section" id="roles">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">تنظيم الصلاحيات</span>
+        <h2 class="section-title">مصمم ليناسب هيكل الخدمة الكنسية</h2>
+        <p class="section-subtitle">
+          يوفّر النظام صلاحيات واضحة ومؤمّنة لكل دور لضمان الخصوصية وسهولة التنظيم بين أمناء الخدمة والخدام.
+        </p>
+      </div>
+
+      <div class="roles-grid">
+        <div class="role-card">
+          <div class="role-header">
+            <div class="role-badge-icon">👑</div>
+            <div>
+              <div class="role-title">أمين المرحلة</div>
+              <div class="role-en">Stage Admin</div>
+            </div>
+          </div>
+          <ul class="role-list">
+            <li>الإشراف الكامل على دفعات أولى وثانية وثالثة ثانوي.</li>
+            <li>قبول الخدام الجدد وتسكينهم في السنوات الدراسية.</li>
+            <li>تعيين أمناء السنين ومتابعة مؤشرات المرحلة بالكامل.</li>
+            <li>إدارة جلسات قداس المرحلة المشترك واستيراد/تصدير شيتات الإكسيل.</li>
+          </ul>
+        </div>
+
+        <div class="role-card featured">
+          <div class="role-header">
+            <div class="role-badge-icon">🛡️</div>
+            <div>
+              <div class="role-title">أمين السنة</div>
+              <div class="role-en">Grade Admin</div>
+            </div>
+          </div>
+          <ul class="role-list">
+            <li>إدارة مخدومي وخدام سنته الدراسية المحددة.</li>
+            <li>توزيع وإعادة توزيع المخدومين على الخدام بمرونة.</li>
+            <li>إنشاء مهام الافتقاد وكشوف حضور الخدمة والقداس للدفعة.</li>
+            <li>مراجعة السجل التاريخي والتحليلات التفصيلية لكل مخدوم وخادم.</li>
+          </ul>
+        </div>
+
+        <div class="role-card">
+          <div class="role-header">
+            <div class="role-badge-icon">🤝</div>
+            <div>
+              <div class="role-title">الخادم</div>
+              <div class="role-en">Servant</div>
+            </div>
+          </div>
+          <ul class="role-list">
+            <li>عرض قائمة المخدومين المسندين إليه مع فلاتر بحث ذكية.</li>
+            <li>الاتصال الهاتفي أو فتح محادثة واتساب أو نسخ العنوان بضغطة واحدة.</li>
+            <li>تسجيل تقارير الافتقاد وتنفيذ المهام المسندة إليه.</li>
+            <li>متابعة إحصائيات مجموعته ونسب الحضور والافتقاد الخاصة به.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- قسم خطوات التثبيت -->
+  <section class="section" id="install">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">دليل البدء السريع</span>
+        <h2 class="section-title">كيف تحمّل وتثبّت التطبيق على هاتفك؟</h2>
+        <p class="section-subtitle">
+          في 3 خطوات بسيطة يمكنك تثبيت تطبيق «الراعي» على أي هاتف يعمل بنظام Android والانضمام لخدمتك.
+        </p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <h3>حمّل ملف الـ APK</h3>
+          <p>
+            اضغط على زر <strong>«تحميل للأندرويد (APK)»</strong> في هذه الصفحة أو امسح رمز الـ QR بكاميرا هاتفك لبدء تنزيل أحدث إصدار مباشرة.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <h3>فعّل التثبيت وافتح الملف</h3>
+          <p>
+            عند فتح ملف الـ APK بعد التنزيل، إذا ظهرت رسالة أمان من المتصفح اختر <strong>«الإعدادات ← السماح من هذا المصدر»</strong> ثم اضغط <strong>تثبيت (Install)</strong>.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <h3>سجّل دخولك بحساب Google</h3>
+          <p>
+            افتح التطبيق واضغط <strong>«متابعة باستخدام حساب Google»</strong>، وسيقوم أمين الخدمة بتفعيل حسابك وتسكينك في دفعتك فوراً.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- بطاقة التحميل المباشر و QR -->
+  <section class="section" id="download">
+    <div class="container">
+      <div class="download-box">
+        <div class="download-info">
+          <div class="verse-badge" style="margin-bottom: 14px;">
+            <span>✨</span>
+            <span>«كُنْ عَارِفًا حَالَ غَنَمِكَ، وَاجْعَلْ قَلْبَكَ إِلَى قُطْعَانِكَ»</span>
+          </div>
+          <h2>حمّل تطبيق «الراعي» الآن</h2>
+          <p>
+            احصل على النسخة الرسمية المعتمدة لهواتف الأندرويد وابدأ متابعة مخدوميك وتسجيل الافتقاد والحضور بكل سهولة.
+          </p>
+
+          <div class="release-specs">
+            <span class="spec-chip" id="spec-version">📦 الإصدار: v1.0.0</span>
+            <span class="spec-chip">🤖 النظام: Android 6.0+</span>
+            <span class="spec-chip" id="spec-size">⚡ ملف تثبيت مباشر (APK)</span>
+          </div>
+
+          <div class="hero-cta-group" style="margin-bottom: 0;">
+            <a href="efteqad-release.apk" id="secondary-download-btn" class="btn btn-gold btn-hero-download" download>
+              <span>📥</span>
+              <span>تحميل ملف الـ APK المباشر</span>
+            </a>
+            <a href="https://github.com" id="github-releases-btn" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-hero-download" style="background: rgba(255,255,255,0.06); color: #FFF; border-color: rgba(255,255,255,0.2);">
+              <span>🔗</span>
+              <span>صفحة الإصدارات (GitHub Releases)</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="qr-card">
+          <div class="qr-img-wrapper">
+            <img id="qr-code-img" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://github.com" alt="رمز الاستجابة السريعة QR لتحميل التطبيق" />
+          </div>
+          <div class="qr-caption">امسح الكود بكاميرا الموبايل للتحميل السريع</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- الفوتر -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-verse">«الرَّاعِي الصَّالِحُ يَبْذِلُ نَفْسَهُ عَنِ الْخِرَافِ»</div>
+      <p>تطبيق الراعي (Efteqad) — خدمة وافتقاد مرحلة ثانوي © <span id="year"></span></p>
+    </div>
+  </footer>
+
+  <script>
+    // ==================== إعدادات التحميل والربط التلقائي بـ GitHub ====================
+    const APP_CONFIG = {
+      defaultApkPath: "efteqad-release.apk", // المسار الافتراضي إذا تم وضع ملف APK داخل مجلد docs
+      defaultVersion: "v1.0.0",
+      // يمكن كتابة اسم المستخدم والمستودع يدوياً أو تركها ليتم اكتشافها تلقائياً عند الرفع على GitHub Pages
+      githubOwner: "Kerolos77",
+      githubRepo: "efteqad"
+    };
+
+    // تحديث السنة الحالية
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // تبديل شاشات معاينة الهاتف
+    function switchPreview(panelKey, btnEl) {
+      document.querySelectorAll(".screen-tab-btn").forEach((b) => b.classList.remove("active"));
+      btnEl.classList.add("active");
+
+      document.querySelectorAll(".mock-panel").forEach((p) => p.classList.remove("active"));
+      document.getElementById("panel-" + panelKey).classList.add("active");
+
+      const badgeMap = {
+        servant: "واجهة الخادم",
+        admin: "لوحة أمين الخدمة",
+        attendance: "الحضور والقداسات"
+      };
+      document.getElementById("preview-role-badge").textContent = badgeMap[panelKey] || "الراعي";
+    }
+
+    // تبديل الوضع الليلي / النهاري
+    const themeToggleBtn = document.getElementById("theme-toggle");
+    const themeIcon = document.getElementById("theme-icon");
+    const savedTheme = localStorage.getItem("efteqad_web_theme") || "dark";
+
+    function applyTheme(theme) {
+      document.documentElement.setAttribute("data-theme", theme);
+      themeIcon.textContent = theme === "dark" ? "☀️" : "🌙";
+      localStorage.setItem("efteqad_web_theme", theme);
+    }
+    applyTheme(savedTheme);
+
+    themeToggleBtn.addEventListener("click", () => {
+      const current = document.documentElement.getAttribute("data-theme");
+      applyTheme(current === "dark" ? "light" : "dark");
+    });
+
+    // توليد QR Code لرابط الصفحة الحالي واكتشاف أحدث إصدار APK من GitHub Releases تلقائياً
+    (async function initGitHubReleaseAndQR() {
+      const currentUrl = window.location.href.split("#")[0];
+      const qrImg = document.getElementById("qr-code-img");
+      qrImg.src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&margin=6&data=" + encodeURIComponent(currentUrl);
+
+      let owner = APP_CONFIG.githubOwner;
+      let repo = APP_CONFIG.githubRepo;
+
+      // اكتشاف تلقائي إذا كانت الصفحة مرفوعة على username.github.io/repo-name
+      const host = window.location.hostname;
+      const pathParts = window.location.pathname.split("/").filter(Boolean);
+      if (!owner && host.endsWith(".github.io")) {
+        owner = host.replace(".github.io", "");
+        if (pathParts.length > 0) {
+          repo = pathParts[0];
+        }
+      }
+
+      const primaryBtn = document.getElementById("primary-download-btn");
+      const secondaryBtn = document.getElementById("secondary-download-btn");
+      const releasesBtn = document.getElementById("github-releases-btn");
+
+      if (owner && repo) {
+        const releasesPageUrl = `https://github.com/${owner}/${repo}/releases`;
+        releasesBtn.href = releasesPageUrl;
+
+        // رابط مباشر افتراضي لأحدث ملف APK في GitHub Releases إن لم ينجح الـ API
+        const latestReleaseFallbackApk = `https://github.com/${owner}/${repo}/releases/latest/download/efteqad-release.apk`;
+
+        try {
+          const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/releases/latest`);
+          if (res.ok) {
+            const release = await res.json();
+            const versionTag = release.tag_name || APP_CONFIG.defaultVersion;
+            document.getElementById("nav-version").textContent = versionTag;
+            document.getElementById("spec-version").textContent = `📦 الإصدار: ${versionTag}`;
+            document.getElementById("release-status-text").textContent = `الإصدار ${versionTag} متاح للتحميل المباشر`;
+
+            // البحث عن أول ملف ينتهي بـ .apk داخل الـ Release Assets
+            const apkAsset = (release.assets || []).find((a) => a.name && a.name.toLowerCase().endsWith(".apk"));
+            if (apkAsset && apkAsset.browser_download_url) {
+              primaryBtn.href = apkAsset.browser_download_url;
+              secondaryBtn.href = apkAsset.browser_download_url;
+              if (apkAsset.size) {
+                const sizeMb = (apkAsset.size / (1024 * 1024)).toFixed(1);
+                document.getElementById("spec-size").textContent = `⚡ الحجم: ${sizeMb} MB`;
+              }
+              qrImg.src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&margin=6&data=" + encodeURIComponent(apkAsset.browser_download_url);
+              return;
+            }
+          }
+          // في حال عدم وجود Release عبر API بعد، نتحقق إن كان ملف الـ APK المحلي غير موجود فنوجه لـ latest release
+          const headCheck = await fetch(APP_CONFIG.defaultApkPath, { method: "HEAD" });
+          if (!headCheck.ok) {
+            primaryBtn.href = latestReleaseFallbackApk;
+            secondaryBtn.href = latestReleaseFallbackApk;
+          }
+        } catch (_) {
+          // الإبقاء على الرابط الافتراضي عند العمل بدون اتصال
+        }
+      } else {
+        releasesBtn.style.display = "none";
+      }
+    })();
+  </script>
+</body>
+</html>
