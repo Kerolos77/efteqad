@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>بوابة نشر التحديثات — تطبيق الراعي</title>
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Firebase Compat SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+  <style>
+    :root {
+      --bg-main: #071322;
+      --bg-card: rgba(13, 27, 42, 0.92);
+      --bg-card-border: rgba(226, 181, 66, 0.28);
+      --sacred-gold: #E2B542;
+      --gold-hover: #F3C966;
+      --gold-glow: rgba(226, 181, 66, 0.25);
+      --navy-deep: #0D1B2A;
+      --navy-surface: #132238;
+      --navy-border: #1E334D;
+      --text-primary: #F8FAFC;
+      --text-secondary: #94A3B8;
+      --text-muted: #64748B;
+      --emerald: #10B981;
+      --ruby: #EF4444;
+      --blue: #3B82F6;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* خلفية ضوئية */
+    .ambient-glow {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(226, 181, 66, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 90% 80%, rgba(30, 58, 138, 0.25) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(226, 181, 66, 0.05) 0%, transparent 60%);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 30px 20px;
+      position: relative;
+      z-index: 1;
+      flex: 1;
+    }
+
+    /* الشريط العلوي */
+    .header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--navy-border);
+      margin-bottom: 30px;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      border: 1.5px solid var(--sacred-gold);
+      box-shadow: 0 0 16px var(--gold-glow);
+    }
+
+    .brand-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+
+    .brand-subtitle {
+      font-size: 0.8rem;
+      color: var(--sacred-gold);
+      font-weight: 600;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* البطاقات */
+    .card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--bg-card-border);
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      margin-bottom: 24px;
+      transition: all 0.3s ease;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--sacred-gold);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .card-desc {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+    }
+
+    /* الحقول والمدخلات */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      font-weight: 700;
+      font-size: 0.92rem;
+      margin-bottom: 8px;
+      color: #E2E8F0;
+    }
+
+    .form-hint {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .form-input, .form-textarea {
+      width: 100%;
+      padding: 13px 16px;
+      background: rgba(7, 19, 34, 0.85);
+      border: 1.5px solid var(--navy-border);
+      border-radius: 14px;
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 0.96rem;
+      transition: all 0.2s ease;
+      outline: none;
+    }
+
+    .form-input:focus, .form-textarea:focus {
+      border-color: var(--sacred-gold);
+      box-shadow: 0 0 12px var(--gold-glow);
+    }
+
+    .form-input[readonly] {
+      background: rgba(19, 34, 56, 0.6);
+      color: #CBD5E1;
+      cursor: not-allowed;
+      border-color: rgba(226, 181, 66, 0.35);
+    }
+
+    .input-with-badge {
+      position: relative;
+    }
+
+    .input-badge {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.74rem;
+      background: rgba(226, 181, 66, 0.18);
+      color: var(--sacred-gold);
+      padding: 3px 9px;
+      border-radius: 99px;
+      font-weight: 700;
+      border: 1px solid rgba(226, 181, 66, 0.3);
+      pointer-events: none;
+    }
+
+    .form-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 600px) {
+      .form-grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* التبديل وخيارات الاختيار */
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.94rem;
+      font-weight: 700;
+      cursor: pointer;
+      user-select: none;
+      padding: 12px 16px;
+      background: rgba(7, 19, 34, 0.6);
+      border: 1px solid var(--navy-border);
+      border-radius: 14px;
+      transition: all 0.2s;
+    }
+
+    .checkbox-label:hover {
+      border-color: var(--sacred-gold);
+    }
+
+    .checkbox-label input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--sacred-gold);
+      cursor: pointer;
+    }
+
+    /* منطقة سحب وإفلات الـ APK */
+    .dropzone {
+      border: 2px dashed rgba(226, 181, 66, 0.45);
+      background: rgba(7, 19, 34, 0.5);
+      border-radius: 18px;
+      padding: 32px 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .dropzone:hover, .dropzone.dragover {
+      border-color: var(--sacred-gold);
+      background: rgba(226, 181, 66, 0.08);
+      box-shadow: 0 0 20px var(--gold-glow);
+    }
+
+    .dropzone-icon {
+      font-size: 2.6rem;
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+
+    .dropzone-title {
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: #F8FAFC;
+      margin-bottom: 4px;
+    }
+
+    .dropzone-subtitle {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+    }
+
+    .dropzone input[type="file"] {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+    }
+
+    .file-preview {
+      display: none;
+      margin-top: 14px;
+      padding: 12px 16px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      border-radius: 12px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .file-preview-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #34D399;
+    }
+
+    .file-remove-btn {
+      background: none;
+      border: none;
+      color: #F87171;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 0.85rem;
+      padding: 4px 8px;
+    }
+
+    /* الأزرار */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: 16px;
+      font-weight: 800;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-decoration: none;
+      font-family: inherit;
+      border: none;
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #E2B542 0%, #D4A017 100%);
+      color: #071931;
+      box-shadow: 0 8px 24px var(--gold-glow);
+      width: 100%;
+    }
+
+    .btn-gold:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(226, 181, 66, 0.4);
+      background: linear-gradient(135deg, #F3C966 0%, #E2B542 100%);
+    }
+
+    .btn-gold:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--navy-border);
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      padding: 8px 16px;
+      border-radius: 12px;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--sacred-gold);
+      color: var(--sacred-gold);
+    }
+
+    /* أشرطة التنبيه والتقدم */
+    .alert {
+      padding: 14px 18px;
+      border-radius: 14px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: none;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .alert-error {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: #FCA5A5;
+    }
+
+    .alert-success {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #6EE7B7;
+    }
+
+    .progress-box {
+      display: none;
+      margin-top: 24px;
+      background: rgba(7, 19, 34, 0.9);
+      border: 1.5px solid var(--sacred-gold);
+      border-radius: 18px;
+      padding: 20px;
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 0.92rem;
+      font-weight: 800;
+    }
+
+    .progress-bar-bg {
+      width: 100%;
+      height: 12px;
+      background: var(--navy-surface);
+      border-radius: 99px;
+      overflow: hidden;
+      border: 1px solid var(--navy-border);
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #E2B542, #10B981);
+      transition: width 0.2s ease;
+      border-radius: 99px;
+    }
+
+    .progress-subtext {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-top: 8px;
+    }
+
+    /* بطاقة الإصدار الحالي في السيرفر */
+    .current-version-strip {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      background: rgba(19, 34, 56, 0.5);
+      border: 1px solid var(--navy-border);
+      border-radius: 16px;
+      padding: 14px 20px;
+      margin-bottom: 24px;
+      font-size: 0.9rem;
+    }
+
+    .version-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pill {
+      font-size: 0.8rem;
+      padding: 3px 10px;
+      border-radius: 99px;
+      font-weight: 800;
+    }
+
+    .pill-gold {
+      background: rgba(226, 181, 66, 0.2);
+      color: var(--sacred-gold);
+      border: 1px solid rgba(226, 181, 66, 0.35);
+    }
+
+    .pill-emerald {
+      background: rgba(16, 185, 129, 0.2);
+      color: #34D399;
+      border: 1px solid rgba(16, 185, 129, 0.35);
+    }
+
+    /* كود الشرح والمساعدة */
+    .help-toggle {
+      background: none;
+      border: none;
+      color: var(--sacred-gold);
+      cursor: pointer;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: underline;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 4px;
+    }
+
+    .help-content {
+      display: none;
+      background: rgba(7, 19, 34, 0.8);
+      border: 1px solid var(--navy-border);
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin-top: 8px;
+      font-size: 0.82rem;
+      color: #CBD5E1;
+      line-height: 1.6;
+    }
+
+    .help-content a {
+      color: var(--sacred-gold);
+      font-weight: 700;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 24px 0;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--navy-border);
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient-glow"></div>
+
+  <div class="container">
+    <!-- الشريط العلوي -->
+    <header class="header-bar">
+      <a href="index.html" class="brand-group">
+        <img src="assets/logo.png" alt="الراعي" class="brand-logo" />
+        <div>
+          <div class="brand-title">تطبيق الراعي</div>
+          <div class="brand-subtitle">بوابة نشر التحديثات السحابية 🛡️</div>
+        </div>
+      </a>
+
+      <div class="header-actions">
+        <a href="index.html" target="_blank" class="btn btn-outline">
+          <span>🌐</span>
+          <span>معاينة صفحة التحميل</span>
+        </a>
+        <button id="logout-btn" class="btn btn-outline" style="display: none;">
+          <span>🚪</span>
+          <span>تسجيل الخروج</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- تنبيهات عامة -->
+    <div id="global-alert" class="alert"></div>
+
+    <!-- 1. شاشة تسجيل الدخول -->
+    <div id="login-section" class="card">
+      <div class="card-title">
+        <span>🔐</span>
+        <span>تسجيل دخول مسؤول التحديثات</span>
+      </div>
+      <p class="card-desc">
+        هذه الصفحة مخصصة فقط لرفع وتحديث إصدارات التطبيق الرسمية وحفظها في Firebase و GitHub.
+      </p>
+
+      <form id="login-form">
+        <div class="form-group">
+          <label class="form-label" for="login-email">البريد الإلكتروني المعتمد</label>
+          <div class="input-with-badge">
+            <input type="email" id="login-email" class="form-input" value="admin@admin.com" readonly />
+            <span class="input-badge">حساب التحديثات 🔒</span>
+          </div>
+          <p class="form-hint">البريد ثابت ومخصص لرفع التحديثات ومربوط بقواعد حماية Firestore.</p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="login-password">كلمة المرور</label>
+          <input type="password" id="login-password" class="form-input" placeholder="أدخل كلمة المرور الخاصة بالحساب" required autocomplete="current-password" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="github-token">رمز وصول GitHub (Personal Access Token)</label>
+          <input type="password" id="github-token" class="form-input" placeholder="ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" autocomplete="off" />
+          <div class="form-hint">مطلوب لرفع ملف الـ APK تلقائياً كـ Release على مستودع <strong>Kerolos77/efteqad-App</strong>.</div>
+          
+          <button type="button" class="help-toggle" id="toggle-token-help">
+            <span>❓</span>
+            <span>كيف أحصل على هذا الرمز؟ (خطوة واحدة فقط)</span>
+          </button>
+          <div class="help-content" id="token-help-content">
+            1. افتح رابط إعداد التوكن المباشر:
+            <a href="https://github.com/settings/tokens/new?scopes=repo&description=Efteqad+Release+Manager" target="_blank" rel="noopener noreferrer">اضغط هنا لإنشاء التوكن على GitHub ↗</a><br />
+            2. تأكد أن علامة <strong>repo</strong> مُحددة، ثم اضغط <strong>Generate token</strong> في أسفل الصفحة.<br />
+            3. انسخ التوكن والصقه هنا. سيتم حفظه مشفراً في متصفحك أنت فقط ولا يراه أي شخص آخر.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="remember-token" checked />
+            <span>حفظ رمز GitHub على هذا المتصفح لعدم كتابته مرة أخرى</span>
+          </label>
+        </div>
+
+        <button type="submit" id="login-submit-btn" class="btn btn-gold">
+          <span>تسجيل الدخول ومتابعة النشر</span>
+          <span>➔</span>
+        </button>
+      </form>
+    </div>
+
+    <!-- 2. لوحة نموذج النشر (تظهر بعد الدخول) -->
+    <div id="release-section" style="display: none;">
+      <!-- شريط الإصدار الحالي في السيرفر -->
+      <div class="current-version-strip">
+        <div class="version-meta-item">
+          <span>📡 الإصدار المسجل حالياً في السيرفر:</span>
+          <span class="pill pill-gold" id="current-server-version">جاري الفحص...</span>
+        </div>
+        <div class="version-meta-item">
+          <span>الإلزام:</span>
+          <span class="pill" id="current-force-status">-</span>
+        </div>
+        <div class="version-meta-item">
+          <span>آخر تحديث:</span>
+          <span style="color: var(--text-secondary);" id="current-updated-at">-</span>
+        </div>
+      </div>
+
+      <!-- بطاقة نموذج الرفع -->
+      <div class="card">
+        <div class="card-title">
+          <span>🚀</span>
+          <span>بيانات الإصدار الجديد وملف الـ APK</span>
+        </div>
+        <p class="card-desc">
+          قم بملء تفاصيل الإصدار واختيار ملف الـ APK، وسيتولى النظام رفعه إلى GitHub وتحديث Firebase فوراً.
+        </p>
+
+        <form id="release-form">
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="release-version">رقم الإصدار الجديد (Version Name) *</label>
+              <input type="text" id="release-version" class="form-input" placeholder="مثال: 1.0.2" required />
+              <p class="form-hint">يجب أن يكون أكبر من الإصدار الحالي (مثال: 1.0.2 أو 1.1.0).</p>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="release-build-number">رقم البناء (Build Number)</label>
+              <input type="number" id="release-build-number" class="form-input" placeholder="مثال: 2" value="2" />
+              <p class="form-hint">رقم تصاعدي فريد للبناء.</p>
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="release-min-version">أقل إصدار مدعوم (Min Required Version)</label>
+              <input type="text" id="release-min-version" class="form-input" placeholder="مثال: 1.0.0" value="1.0.0" />
+              <p class="form-hint">النسخ الأقل من هذا الرقم لن تتمكن من الدخول وستُجبر على التحديث.</p>
+            </div>
+
+            <div class="form-group" style="display: flex; align-items: flex-end;">
+              <label class="checkbox-label" style="width: 100%; margin-bottom: 20px;">
+                <input type="checkbox" id="release-force-update" checked />
+                <span>إلزام جميع الخدام بالتحديث الفوري (Force Update)</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="release-notes">ما الجديد في هذا التحديث؟ (Release Notes) *</label>
+            <textarea id="release-notes" class="form-textarea" rows="3" placeholder="اكتب الملاحظات باللغة العربية (مثال: إضافة خاصية حظر اختيار تواريخ مستقبلية في الحضور، إصلاح مزامنة الأوفلاين، تحسينات في السرعة...)" required></textarea>
+            <p class="form-hint">ستظهر هذه الرسالة مباشرة في نافذة التحديث داخل تطبيق الموبايل وعلى صفحة الويب.</p>
+          </div>
+
+          <!-- منطقة سحب وإفلات ملف الـ APK -->
+          <div class="form-group">
+            <label class="form-label">ملف تطبيق الأندرويد (APK File) *</label>
+            
+            <div class="dropzone" id="apk-dropzone">
+              <span class="dropzone-icon">📦</span>
+              <div class="dropzone-title">اضغط هنا لاختيار ملف الـ APK أو اسحبه إلى هنا</div>
+              <div class="dropzone-subtitle">الملفات المدعومة: .apk (يُفضل اسم efteqad-release.apk أو app-release.apk)</div>
+              <input type="file" id="apk-file-input" accept=".apk,application/vnd.android.package-archive" />
+            </div>
+
+            <div class="file-preview" id="apk-file-preview">
+              <div class="file-preview-info">
+                <span>✅</span>
+                <span id="apk-file-name">filename.apk</span>
+                <span id="apk-file-size" style="color: var(--text-secondary); font-size: 0.8rem;">(0 MB)</span>
+              </div>
+              <button type="button" class="file-remove-btn" id="apk-file-remove">إلغاء الملف ✕</button>
+            </div>
+          </div>
+
+          <!-- خيار رابط مباشر بديل إذا كان الملف مرفوعاً يدوياً -->
+          <div class="form-group">
+            <button type="button" class="help-toggle" id="toggle-manual-url">
+              <span>🔗</span>
+              <span>أو استخدام رابط تنزيل مباشر مسبق (بدون رفع ملف جديد)</span>
+            </button>
+            <div id="manual-url-container" style="display: none; margin-top: 10px;">
+              <input type="url" id="manual-download-url" class="form-input" placeholder="https://github.com/Kerolos77/efteqad-App/releases/download/.../efteqad-release.apk" />
+              <p class="form-hint">اترك هذا الحقل فارغاً إذا كنت قد اخترت ملف الـ APK بالأعلى ليتم رفعه تلقائياً.</p>
+            </div>
+          </div>
+
+          <!-- شريط تقدم الرفع المباشر -->
+          <div class="progress-box" id="upload-progress-box">
+            <div class="progress-header">
+              <span id="progress-status-title">جاري التجهيز...</span>
+              <span id="progress-percentage">0%</span>
+            </div>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" id="progress-bar-fill"></div>
+            </div>
+            <div class="progress-subtext" id="progress-subtext">يرجى الانتظار وعدم إغلاق الصفحة أثناء رفع الملف...</div>
+          </div>
+
+          <button type="submit" id="publish-submit-btn" class="btn btn-gold" style="margin-top: 14px;">
+            <span>🚀</span>
+            <span>نشر التحديث الجديد وحفظه في النظام</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>تطبيق الراعي (Efteqad) — بوابة إدارة التحديثات السحابية © <span id="year"></span></p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // ==================== إعدادات Firebase ====================
+    const firebaseConfig = {
+      apiKey: "AIzaSyD6oEqHMX4bG2_O4MSDyz623URQxbx6D0s",
+      authDomain: "efteqad-1aa4d.firebaseapp.com",
+      projectId: "efteqad-1aa4d",
+      storageBucket: "efteqad-1aa4d.firebasestorage.app",
+      messagingSenderId: "882251802958",
+      appId: "1:882251802958:web:d9ac2eb930957dcedb961f"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    const GITHUB_REPO_OWNER = "Kerolos77";
+    const GITHUB_REPO_NAME = "efteqad-App";
+
+    // ==================== إدارة العناصر التفاعلية ====================
+    const loginSection = document.getElementById("login-section");
+    const releaseSection = document.getElementById("release-section");
+    const globalAlert = document.getElementById("global-alert");
+    const logoutBtn = document.getElementById("logout-btn");
+
+    const loginForm = document.getElementById("login-form");
+    const loginEmailInput = document.getElementById("login-email");
+    const loginPasswordInput = document.getElementById("login-password");
+    const githubTokenInput = document.getElementById("github-token");
+    const rememberTokenCheckbox = document.getElementById("remember-token");
+
+    const currentServerVersionEl = document.getElementById("current-server-version");
+    const currentForceStatusEl = document.getElementById("current-force-status");
+    const currentUpdatedAtEl = document.getElementById("current-updated-at");
+
+    const releaseForm = document.getElementById("release-form");
+    const releaseVersionInput = document.getElementById("release-version");
+    const releaseBuildNumberInput = document.getElementById("release-build-number");
+    const releaseMinVersionInput = document.getElementById("release-min-version");
+    const releaseForceUpdateCheckbox = document.getElementById("release-force-update");
+    const releaseNotesTextarea = document.getElementById("release-notes");
+
+    const apkDropzone = document.getElementById("apk-dropzone");
+    const apkFileInput = document.getElementById("apk-file-input");
+    const apkFilePreview = document.getElementById("apk-file-preview");
+    const apkFileName = document.getElementById("apk-file-name");
+    const apkFileSize = document.getElementById("apk-file-size");
+    const apkFileRemove = document.getElementById("apk-file-remove");
+
+    const manualUrlContainer = document.getElementById("manual-url-container");
+    const manualDownloadUrlInput = document.getElementById("manual-download-url");
+
+    const uploadProgressBox = document.getElementById("upload-progress-box");
+    const progressBarFill = document.getElementById("progress-bar-fill");
+    const progressStatusTitle = document.getElementById("progress-status-title");
+    const progressPercentage = document.getElementById("progress-percentage");
+    const progressSubtext = document.getElementById("progress-subtext");
+    const publishSubmitBtn = document.getElementById("publish-submit-btn");
+
+    let selectedApkFile = null;
+    let savedGitHubToken = localStorage.getItem("efteqad_gh_token") || "";
+
+    if (savedGitHubToken) {
+      githubTokenInput.value = savedGitHubToken;
+    }
+
+    // تبديل مساعدة التوكن
+    document.getElementById("toggle-token-help").addEventListener("click", () => {
+      const box = document.getElementById("token-help-content");
+      box.style.display = box.style.display === "block" ? "none" : "block";
+    });
+
+    // تبديل الرابط اليدوي
+    document.getElementById("toggle-manual-url").addEventListener("click", () => {
+      manualUrlContainer.style.display = manualUrlContainer.style.display === "block" ? "none" : "block";
+    });
+
+    function showAlert(msg, isError = true) {
+      globalAlert.textContent = msg;
+      globalAlert.className = "alert " + (isError ? "alert-error" : "alert-success");
+      globalAlert.style.display = "flex";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function hideAlert() {
+      globalAlert.style.display = "none";
+    }
+
+    // ==================== مراقبة حالة تسجيل الدخول ====================
+    auth.onAuthStateChanged((user) => {
+      if (user && user.email === "admin@admin.com") {
+        loginSection.style.display = "none";
+        releaseSection.style.display = "block";
+        logoutBtn.style.display = "inline-flex";
+        hideAlert();
+        loadCurrentFirestoreVersion();
+      } else {
+        loginSection.style.display = "block";
+        releaseSection.style.display = "none";
+        logoutBtn.style.display = "none";
+      }
+    });
+
+    // تسجيل الدخول
+    loginForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      hideAlert();
+
+      const email = loginEmailInput.value.trim();
+      const password = loginPasswordInput.value;
+      const token = githubTokenInput.value.trim();
+
+      if (!password) {
+        showAlert("يرجى إدخال كلمة المرور.");
+        return;
+      }
+
+      if (token && rememberTokenCheckbox.checked) {
+        localStorage.setItem("efteqad_gh_token", token);
+        savedGitHubToken = token;
+      } else if (!rememberTokenCheckbox.checked) {
+        localStorage.removeItem("efteqad_gh_token");
+        savedGitHubToken = token;
+      } else {
+        savedGitHubToken = token;
+      }
+
+      const submitBtn = document.getElementById("login-submit-btn");
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = "<span>جاري التحقق من الحساب...</span>";
+
+      try {
+        await auth.signInWithEmailAndPassword(email, password);
+        // ستتولى دالة onAuthStateChanged التبديل للواجهة التالية
+      } catch (err) {
+        console.error("Login error:", err);
+        let errorMsg = "فشل تسجيل الدخول: " + err.message;
+        if (err.code === "auth/wrong-password" || err.code === "auth/invalid-credential") {
+          errorMsg = "كلمة المرور غير صحيحة. يرجى التأكد وإعادة المحاولة.";
+        } else if (err.code === "auth/user-not-found") {
+          errorMsg = "المستخدم غير موجود في Firebase Authentication. يرجى إنشاؤه أولاً.";
+        }
+        showAlert(errorMsg, true);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = "<span>تسجيل الدخول ومتابعة النشر</span><span>➔</span>";
+      }
+    });
+
+    // تسجيل الخروج
+    logoutBtn.addEventListener("click", async () => {
+      await auth.signOut();
+      showAlert("تم تسجيل الخروج بنجاح.", false);
+    });
+
+    // ==================== جلب الإصدار الحالي من Firestore ====================
+    async function loadCurrentFirestoreVersion() {
+      try {
+        const docSnap = await db.collection("settings").doc("app_version").get();
+        if (docSnap.exists) {
+          const data = docSnap.data();
+          const ver = data.latestVersion || data.version || "1.0.0";
+          currentServerVersionEl.textContent = "v" + ver;
+
+          const isForce = data.forceUpdate === true;
+          currentForceStatusEl.textContent = isForce ? "إجباري ⚠️" : "اختياري ✅";
+          currentForceStatusEl.className = "pill " + (isForce ? "pill-gold" : "pill-emerald");
+
+          if (data.updatedAt && data.updatedAt.toDate) {
+            currentUpdatedAtEl.textContent = data.updatedAt.toDate().toLocaleString("ar-EG");
+          } else {
+            currentUpdatedAtEl.textContent = "غير محدد";
+          }
+
+          // اقتراح الإصدار التالي تلقائياً
+          const parts = ver.split(".");
+          if (parts.length === 3 && !isNaN(parts[2])) {
+            const nextPatch = parseInt(parts[2], 10) + 1;
+            releaseVersionInput.placeholder = `مثال: ${parts[0]}.${parts[1]}.${nextPatch}`;
+          }
+          if (data.minRequiredVersion) {
+            releaseMinVersionInput.value = data.minRequiredVersion;
+          }
+        } else {
+          currentServerVersionEl.textContent = "غير مسجل بعد";
+          currentForceStatusEl.textContent = "-";
+        }
+      } catch (err) {
+        console.warn("Failed to load server version:", err);
+      }
+    }
+
+    // ==================== التعامل مع ملف الـ APK ====================
+    apkFileInput.addEventListener("change", (e) => {
+      handleFileSelected(e.target.files[0]);
+    });
+
+    apkDropzone.addEventListener("dragover", (e) => {
+      e.preventDefault();
+      apkDropzone.classList.add("dragover");
+    });
+
+    apkDropzone.addEventListener("dragleave", () => {
+      apkDropzone.classList.remove("dragover");
+    });
+
+    apkDropzone.addEventListener("drop", (e) => {
+      e.preventDefault();
+      apkDropzone.classList.remove("dragover");
+      if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+        handleFileSelected(e.dataTransfer.files[0]);
+      }
+    });
+
+    function handleFileSelected(file) {
+      if (!file) return;
+      if (!file.name.toLowerCase().endsWith(".apk")) {
+        showAlert("الملف المحدد ليس ملف APK صالح (.apk).", true);
+        return;
+      }
+
+      selectedApkFile = file;
+      apkFileName.textContent = file.name;
+      const sizeMb = (file.size / (1024 * 1024)).toFixed(1);
+      apkFileSize.textContent = `(${sizeMb} MB)`;
+
+      apkDropzone.style.display = "none";
+      apkFilePreview.style.display = "flex";
+      hideAlert();
+    }
+
+    apkFileRemove.addEventListener("click", () => {
+      selectedApkFile = null;
+      apkFileInput.value = "";
+      apkDropzone.style.display = "block";
+      apkFilePreview.style.display = "none";
+    });
+
+    // ==================== عملية النشر الشاملة ====================
+    releaseForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      hideAlert();
+
+      const version = releaseVersionInput.value.trim().replace(/^v/i, "");
+      const buildNumber = parseInt(releaseBuildNumberInput.value.trim(), 10) || 1;
+      const minRequiredVersion = releaseMinVersionInput.value.trim().replace(/^v/i, "") || "1.0.0";
+      const forceUpdate = releaseForceUpdateCheckbox.checked;
+      const releaseNotes = releaseNotesTextarea.value.trim();
+      const manualUrl = manualDownloadUrlInput.value.trim();
+      const token = savedGitHubToken || githubTokenInput.value.trim();
+
+      if (!version) {
+        showAlert("يرجى إدخال رقم الإصدار الجديد.");
+        return;
+      }
+      if (!releaseNotes) {
+        showAlert("يرجى كتابة ملاحظات التحديث.");
+        return;
+      }
+
+      if (!selectedApkFile && !manualUrl) {
+        showAlert("يرجى اختيار ملف APK لرفعه أو إدخال رابط تنزيل مباشر مسبق.", true);
+        return;
+      }
+
+      publishSubmitBtn.disabled = true;
+      uploadProgressBox.style.display = "block";
+      updateProgress(5, "جاري بدء عملية النشر والتحقق...");
+
+      let finalDownloadUrl = manualUrl;
+
+      try {
+        // 1. إذا وُجد ملف APK محدد ولم يتم تحديد رابط يدوي، نقوم برفعه إلى GitHub Releases
+        if (selectedApkFile && !manualUrl) {
+          if (!token) {
+            throw new Error("رمز وصول GitHub (Token) مطلوب لرفع ملف الـ APK إلى مستودع GitHub Releases. يرجى إدخاله في خانة التوكن.");
+          }
+
+          updateProgress(15, "1/3: جاري إنشاء الإصدار (Release) على GitHub...");
+          const tag = "v" + version;
+          const releaseData = await getOrCreateGitHubRelease(token, tag, releaseNotes);
+
+          updateProgress(30, "2/3: جاري رفع ملف الـ APK إلى GitHub Assets...");
+          finalDownloadUrl = await uploadApkToGitHubRelease(token, releaseData, selectedApkFile);
+        }
+
+        // 2. تحديث بيانات السيرفر في Firebase Firestore
+        updateProgress(85, "3/3: جاري تحديث بيانات الإصدار في Firebase Firestore...");
+        await db.collection("settings").doc("app_version").set({
+          version: version,
+          latestVersion: version,
+          buildNumber: buildNumber,
+          minRequiredVersion: minRequiredVersion,
+          forceUpdate: forceUpdate,
+          releaseNotes: releaseNotes,
+          downloadUrl: finalDownloadUrl,
+          updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        }, { merge: true });
+
+        // 3. نجاح كامل
+        updateProgress(100, "✅ اكتملت عملية النشر بنجاح!");
+        showAlert(`تم نشر الإصدار ${version} بنجاح وربطه بالفايربيس والصفحة التعريفية والتطبيق! 🎉`, false);
+
+        // تحديث معلومات الشاشة
+        await loadCurrentFirestoreVersion();
+
+        // تصفير النموذج
+        releaseForm.reset();
+        apkFileRemove.click();
+      } catch (err) {
+        console.error("Publishing error:", err);
+        showAlert("حدث خطأ أثناء النشر: " + err.message, true);
+      } finally {
+        publishSubmitBtn.disabled = false;
+      }
+    });
+
+    function updateProgress(percent, statusText, subText = null) {
+      progressBarFill.style.width = percent + "%";
+      progressPercentage.textContent = percent + "%";
+      if (statusText) progressStatusTitle.textContent = statusText;
+      if (subText) progressSubtext.textContent = subText;
+    }
+
+    // ==================== دوال التعامل مع GitHub API ====================
+    async function getOrCreateGitHubRelease(token, tagName, bodyNotes) {
+      // فحص إن كان الـ Release موجوداً مسبقاً
+      const checkRes = await fetch(`https://api.github.com/repos/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}/releases/tags/${tagName}`, {
+        headers: {
+          "Authorization": `Bearer ${token}`,
+          "Accept": "application/vnd.github+json"
+        }
+      });
+
+      if (checkRes.ok) {
+        return await checkRes.json();
+      }
+
+      // إنشاء Release جديد
+      const createRes = await fetch(`https://api.github.com/repos/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}/releases`, {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+          "Accept": "application/vnd.github+json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          tag_name: tagName,
+          target_commitish: "main",
+          name: `الإصدار ${tagName}`,
+          body: bodyNotes,
+          draft: false,
+          prerelease: false
+        })
+      });
+
+      if (!createRes.ok) {
+        const errJson = await createRes.json().catch(() => ({}));
+        throw new Error(errJson.message || `فشل إنشاء الـ Release في GitHub (كود ${createRes.status})`);
+      }
+
+      return await createRes.json();
+    }
+
+    function uploadApkToGitHubRelease(token, release, file) {
+      return new Promise((resolve, reject) => {
+        // حذف أي ملف سابق بنفس الاسم إن وُجد في هذا الـ Release
+        const assetName = "efteqad-release.apk";
+        const existingAsset = (release.assets || []).find((a) => a.name === assetName);
+
+        const doUpload = () => {
+          let uploadUrl = release.upload_url.replace(/\{(\?.*)?\}/, "");
+          uploadUrl += (uploadUrl.includes("?") ? "&" : "?") + `name=${encodeURIComponent(assetName)}`;
+
+          const xhr = new XMLHttpRequest();
+          xhr.open("POST", uploadUrl, true);
+          xhr.setRequestHeader("Authorization", `Bearer ${token}`);
+          xhr.setRequestHeader("Content-Type", "application/vnd.android.package-archive");
+          xhr.setRequestHeader("Accept", "application/vnd.github+json");
+
+          xhr.upload.onprogress = (evt) => {
+            if (evt.lengthComputable) {
+              const filePercent = Math.round((evt.loaded / evt.total) * 100);
+              // نحسب التقدم الإجمالي من 30% إلى 80%
+              const totalPercent = Math.round(30 + (filePercent * 0.5));
+              const uploadedMb = (evt.loaded / (1024 * 1024)).toFixed(1);
+              const totalMb = (evt.total / (1024 * 1024)).toFixed(1);
+              updateProgress(
+                totalPercent,
+                `جاري رفع ملف الـ APK (${filePercent}%)...`,
+                `تم رفع ${uploadedMb} MB من إجمالي ${totalMb} MB`
+              );
+            }
+          };
+
+          xhr.onload = () => {
+            if (xhr.status >= 200 && xhr.status < 300) {
+              try {
+                const res = JSON.parse(xhr.responseText);
+                resolve(res.browser_download_url);
+              } catch (e) {
+                resolve(`https://github.com/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}/releases/download/${release.tag_name}/${assetName}`);
+              }
+            } else {
+              reject(new Error(`فشل رفع ملف الـ APK إلى GitHub (كود ${xhr.status}): ${xhr.responseText}`));
+            }
+          };
+
+          xhr.onerror = () => {
+            reject(new Error("انقطع الاتصال أثناء رفع ملف الـ APK إلى GitHub. يرجى التحقق من سرعة الإنترنت."));
+          };
+
+          xhr.send(file);
+        };
+
+        if (existingAsset && existingAsset.id) {
+          // حذف الـ Asset القديم أولاً ثم الرفع
+          fetch(`https://api.github.com/repos/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}/releases/assets/${existingAsset.id}`, {
+            method: "DELETE",
+            headers: {
+              "Authorization": `Bearer ${token}`,
+              "Accept": "application/vnd.github+json"
+            }
+          }).then(() => doUpload()).catch(() => doUpload());
+        } else {
+          doUpload();
+        }
+      });
+    }
+  </script>
+</body>
+</html>
