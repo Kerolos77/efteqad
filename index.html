@@ -1451,6 +1451,11 @@
             <span class="spec-chip" id="spec-size">⚡ ملف تثبيت مباشر (APK)</span>
           </div>
 
+          <div id="release-notes-box" style="display:none; margin-bottom:22px; padding:12px 16px; border-radius:14px; background:rgba(255,255,255,0.08); border-right:3px solid var(--sacred-gold); font-size:0.9rem; color:#E2E8F0;">
+            <div style="font-weight:700; color:var(--sacred-gold); margin-bottom:4px;">✨ ملاحظات الإصدار (من السيرفر):</div>
+            <div id="release-notes-text"></div>
+          </div>
+
           <div class="hero-cta-group" style="margin-bottom: 0;">
             <a href="efteqad-release.apk" id="secondary-download-btn" class="btn btn-gold btn-hero-download" download>
               <span>📥</span>
@@ -1482,13 +1487,15 @@
   </footer>
 
   <script>
-    // ==================== إعدادات التحميل والربط التلقائي بـ GitHub ====================
+    // ==================== إعدادات التحميل والربط التلقائي بـ Firebase و GitHub ====================
     const APP_CONFIG = {
       defaultApkPath: "efteqad-release.apk", // المسار الافتراضي إذا تم وضع ملف APK داخل مجلد docs
       defaultVersion: "v1.0.0",
+      firebaseProjectId: "efteqad-1aa4d",
+      firestoreDocUrl: "https://firestore.googleapis.com/v1/projects/efteqad-1aa4d/databases/(default)/documents/settings/app_version",
       // يمكن كتابة اسم المستخدم والمستودع يدوياً أو تركها ليتم اكتشافها تلقائياً عند الرفع على GitHub Pages
       githubOwner: "Kerolos77",
-      githubRepo: "efteqad"
+      githubRepo: "efteqad-App"
     };
 
     // تحديث السنة الحالية
@@ -1527,8 +1534,41 @@
       applyTheme(current === "dark" ? "light" : "dark");
     });
 
-    // توليد QR Code لرابط الصفحة الحالي واكتشاف أحدث إصدار APK من GitHub Releases تلقائياً
-    (async function initGitHubReleaseAndQR() {
+    function formatVersionTag(v) {
+      if (!v) return APP_CONFIG.defaultVersion;
+      return (v.startsWith("v") || v.startsWith("V")) ? v : ("v" + v);
+    }
+
+    function updateVersionUi(versionStr, releaseNotes, directDownloadUrl) {
+      const formatted = formatVersionTag(versionStr);
+      const navVer = document.getElementById("nav-version");
+      if (navVer) navVer.textContent = formatted;
+
+      const specVer = document.getElementById("spec-version");
+      if (specVer) specVer.textContent = `📦 الإصدار: ${formatted}`;
+
+      const statusText = document.getElementById("release-status-text");
+      if (statusText) statusText.textContent = `الإصدار ${formatted} متاح للتحميل المباشر`;
+
+      if (releaseNotes && releaseNotes.trim().length > 0) {
+        const notesBox = document.getElementById("release-notes-box");
+        const notesText = document.getElementById("release-notes-text");
+        if (notesBox && notesText) {
+          notesText.textContent = releaseNotes.trim();
+          notesBox.style.display = "block";
+        }
+      }
+
+      if (directDownloadUrl && (directDownloadUrl.toLowerCase().endsWith(".apk") || directDownloadUrl.includes("/releases/download/"))) {
+        const primaryBtn = document.getElementById("primary-download-btn");
+        const secondaryBtn = document.getElementById("secondary-download-btn");
+        if (primaryBtn) primaryBtn.href = directDownloadUrl;
+        if (secondaryBtn) secondaryBtn.href = directDownloadUrl;
+      }
+    }
+
+    // مزامنة الإصدار مع Firestore والربط بـ GitHub Releases و QR Code
+    (async function initReleaseDataAndQR() {
       const currentUrl = window.location.href.split("#")[0];
       const qrImg = document.getElementById("qr-code-img");
       qrImg.src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&margin=6&data=" + encodeURIComponent(currentUrl);
@@ -1550,9 +1590,29 @@
       const secondaryBtn = document.getElementById("secondary-download-btn");
       const releasesBtn = document.getElementById("github-releases-btn");
 
+      // 1. جلب أحدث إصدار وملاحظات التحديث من Firebase Firestore أولاً
+      try {
+        const fsRes = await fetch(APP_CONFIG.firestoreDocUrl);
+        if (fsRes.ok) {
+          const fsData = await fsRes.json();
+          const fields = fsData.fields || {};
+          const fsVersion = (fields.latestVersion && fields.latestVersion.stringValue) ||
+                            (fields.version && fields.version.stringValue);
+          const fsNotes = fields.releaseNotes && fields.releaseNotes.stringValue;
+          const fsDownloadUrl = fields.downloadUrl && fields.downloadUrl.stringValue;
+
+          if (fsVersion) {
+            updateVersionUi(fsVersion, fsNotes, fsDownloadUrl);
+          }
+        }
+      } catch (err) {
+        console.warn("تعذر جلب بيانات الإصدار من Firestore:", err);
+      }
+
+      // 2. فحص GitHub Releases لتجهيز روابط APK المباشرة وحجم الملف
       if (owner && repo) {
         const releasesPageUrl = `https://github.com/${owner}/${repo}/releases`;
-        releasesBtn.href = releasesPageUrl;
+        if (releasesBtn) releasesBtn.href = releasesPageUrl;
 
         // رابط مباشر افتراضي لأحدث ملف APK في GitHub Releases إن لم ينجح الـ API
         const latestReleaseFallbackApk = `https://github.com/${owner}/${repo}/releases/latest/download/efteqad-release.apk`;
@@ -1562,9 +1622,12 @@
           if (res.ok) {
             const release = await res.json();
             const versionTag = release.tag_name || APP_CONFIG.defaultVersion;
-            document.getElementById("nav-version").textContent = versionTag;
-            document.getElementById("spec-version").textContent = `📦 الإصدار: ${versionTag}`;
-            document.getElementById("release-status-text").textContent = `الإصدار ${versionTag} متاح للتحميل المباشر`;
+
+            // إذا لم يكن Firestore قد حدّث الإصدار بعد، نعتمد إصدار الـ Release
+            const currentBadge = document.getElementById("nav-version") ? document.getElementById("nav-version").textContent : "";
+            if (!currentBadge || currentBadge === APP_CONFIG.defaultVersion) {
+              updateVersionUi(versionTag, release.body, null);
+            }
 
             // البحث عن أول ملف ينتهي بـ .apk داخل الـ Release Assets
             const apkAsset = (release.assets || []).find((a) => a.name && a.name.toLowerCase().endsWith(".apk"));
@@ -1586,10 +1649,10 @@
             secondaryBtn.href = latestReleaseFallbackApk;
           }
         } catch (_) {
-          // الإبقاء على الرابط الافتراضي عند العمل بدون اتصال
+          // الإبقاء على الروابط الحالية
         }
       } else {
-        releasesBtn.style.display = "none";
+        if (releasesBtn) releasesBtn.style.display = "none";
       }
     })();
   </script>
